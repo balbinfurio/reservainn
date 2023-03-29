@@ -1,0 +1,21 @@
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+body.dark-mode {
+    background-color: #111827;
+    color: #fff;
+  }
+  
+body {
+    background-color: #fff;
+    color: #000;
+  }
+  
+h3 {
+    color: white;
+    font-size: 3rem;
+    margin-top: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
