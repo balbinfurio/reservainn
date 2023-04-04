@@ -18,4 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('agencies', AgencyController::class);
+Route::resource('agencies', AgencyController::class)->names([
+    'index' => 'agency.index',
+    'create' => 'agencies.create',
+    'store' => 'agencies.store',
+    'show' => 'agencies.show',
+    'edit' => 'agencies.edit',
+    'update' => 'agencies.update',
+    'destroy' => 'agencies.destroy',
+]);
+

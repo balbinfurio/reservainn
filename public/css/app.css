@@ -19,3 +19,44 @@ h3 {
     margin-top: 2rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+.flex {
+  /* background-color: black;
+  color: whitesmoke; */
+  width: 300px;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  overflow-x: hidden;
+  padding-top: 20px;
+  padding-right: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.flex ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.flex ul li {
+  margin: 0;
+  padding: 0;
+}
+
+.flex ul li a {
+  display: block;
+  padding: 10px;
+  color: #333333;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.flex ul li.active a,
+.flex ul li a:hover {
+  background-color: #333333;
+  color: #FFFFFF;
+}

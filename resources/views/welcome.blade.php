@@ -20,11 +20,11 @@
             </div>
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                  <a href="{{ 'agencias.index' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
+                  {{-- <a href="{{ route('agency.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                     <div class="text-lg font-medium">
                       Agencias
                     </div>
-                  </a>
+                  </a> --}}
                   <a href="{{ 'clientes.index' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                     <div class="text-lg font-medium">
                       Clientes
@@ -55,5 +55,6 @@
             </div>
         </div>
     </div>
+    
 </body>
 </html>

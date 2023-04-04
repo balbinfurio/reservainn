@@ -1,6 +1,7 @@
 @extends('layouts.main_template')
 
 @section('content')
+<h4 class="bg-dark text-white text-center">AGENCIAS</h4>
     <a href="agencies/create" class="btn btn-dark">CREATE</a>
 
     <table class="table table-dark table-striped mt-4">
