@@ -14,9 +14,9 @@ use App\Http\Controllers\AgencyController;
 |
 */
 
-Route::get('/', function () {
+Route::get('dashboard', function () {
     return view('welcome');
-});
+})->name('dashboard');
 
 Route::resource('agencies', AgencyController::class)->names([
     'index' => 'agency.index',

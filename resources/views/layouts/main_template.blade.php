@@ -23,7 +23,7 @@
 
     <div class="flex">
       <nav class="w-screen lg:w-64 border-r bg-ruta-project-blue border-gray-200 fixed lg:h-screen text-white z-50 overflow-y-hidden lg:overflow-y-auto">
-                <h6 class="font-bold mb-4 pl-6 pt-4 menu-title">MENU</h6>  {{--menu del home--}}
+                <h6 class="font-bold mb-4 pl-6 pt-4 menu-title"><a href="{{ route('dashboard') }}">MENU</a></h6>  {{--menu del home--}}
                 <ul class="h-half-screen lg:h-auto overflow-y-auto">
                     
                         <li><a href="{{ route('agency.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">

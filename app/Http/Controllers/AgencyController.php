@@ -63,7 +63,8 @@ class AgencyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $agency = Agency::find($id);
+        return view('agency.edit')->with('agency', $agency);
     }
 
     /**
@@ -71,7 +72,24 @@ class AgencyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $agency = Agency::find($id);
+
+        $agency->name = $request->get('name');
+        $agency->NIT = $request->get('NIT');
+        $agency->address = $request->get('address');
+        $agency->phone = $request->get('phone');
+        $agency->city = $request->get('city');
+        $agency->mail = $request->get('mail');
+
+        $rules = [
+            'NIT' => ['required', 'regex:/^[0-9]{9}-[0-9]{1}$/']
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $agency->save();
+
+        return redirect('/agencies');
     }
 
     /**
@@ -79,6 +97,8 @@ class AgencyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $agency = Agency::find($id);
+        $agency->delete();
+        return redirect('/agencies');
     }
 }

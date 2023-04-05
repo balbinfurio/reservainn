@@ -27,11 +27,14 @@
                     <td>{{ $agency->city }}</td>
                     <td>{{ $agency->mail }}</td>
                     <td>
-                        <a class="btn btn-info">Editar</a>
-                        <button class="btn btn-danger">Borrar</button>
+                        <form action="{{ route('agencies.destroy', $agency->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
+                            <a href="/agencies/{{ $agency->id }}/edit" class="btn btn-info">Editar</a>
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Borrar</button>
+                        </form>
                     </td>
                 </tr>
-                    
             @endforeach
         </tbody>
     </table>
