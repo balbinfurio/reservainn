@@ -14,6 +14,7 @@
                 <th scope="col">Teléfono</th>
                 <th scope="col">Ciudad</th>
                 <th scope="col">Email</th>
+                <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>

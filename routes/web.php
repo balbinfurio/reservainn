@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\HotelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ Route::get('dashboard', function () {
 })->name('dashboard');
 
 Route::resource('agencies', AgencyController::class)->names([
-    'index' => 'agency.index',
+    'index' => 'agencies.index',
     'create' => 'agencies.create',
     'store' => 'agencies.store',
     'show' => 'agencies.show',
@@ -28,3 +29,12 @@ Route::resource('agencies', AgencyController::class)->names([
     'destroy' => 'agencies.destroy',
 ]);
 
+Route::resource('hotels', HotelController::class)->names([
+    'index' => 'hotels.index',
+    'create' => 'hotels.create',
+    'store' => 'hotels.store',
+    'show' => 'hotels.show',
+    'edit' => 'hotels.edit',
+    'update' => 'hotels.update',
+    'destroy' => 'hotels.destroy',
+]);

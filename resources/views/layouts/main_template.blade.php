@@ -26,13 +26,13 @@
                 <h6 class="font-bold mb-4 pl-6 pt-4 menu-title"><a href="{{ route('dashboard') }}">MENU</a></h6>  {{--menu del home--}}
                 <ul class="h-half-screen lg:h-auto overflow-y-auto">
                     
-                        <li><a href="{{ route('agency.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
+                        <li><a href="{{ route('agencies.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                           <div class="text-lg font-medium">
                             Agencias
                           </div>
                         </a></li>
 
-                        <li><a href="{{ 'oe' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
+                        <li><a href="{{ route('hotels.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                           <div class="text-lg font-medium">
                             Hoteles
                           </div>
