@@ -1,7 +1,7 @@
 @extends('layouts.main_template')
 
 @section('content')
-<h1> EDIT </h1>
+<h1> EDIT AGENCY</h1>
 
 <form action="/agencies/{{ $agency->id }}" method="POST">
     @csrf

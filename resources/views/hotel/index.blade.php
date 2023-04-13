@@ -20,9 +20,12 @@
                     <td>{{ $hotel->id }}</td>
                     <td>{{ $hotel->name }}</td>
                     <td>
-                        
-                            <a class="btn btn-info">Editar</a>
+                        <form action="{{ route('hotels.destroy', $hotel->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
+                            <a href="/hotels/{{ $hotel->id }}/edit" class="btn btn-info">Editar</a>
+                            @csrf
+                            @method('DELETE')
                             <button type="submit" class="btn btn-danger">Borrar</button>
+                        </form>
                     </td>
                 </tr>
             @endforeach

@@ -50,7 +50,8 @@ class HotelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $hotel = Hotel::find($id);
+        return view('hotel.edit')->with('hotel', $hotel);
     }
 
     /**
@@ -58,7 +59,12 @@ class HotelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $hotel = Hotel::find($id);
+        $hotel->name = $request->get('name');
+
+        $hotel->save();
+
+        return redirect('/hotels');
     }
 
     /**
@@ -66,6 +72,8 @@ class HotelController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $hotel = Hotel::find($id);
+        $hotel->delete();
+        return redirect('/hotels');
     }
 }
