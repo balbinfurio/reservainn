@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\HotelController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,14 @@ Route::resource('hotels', HotelController::class)->names([
     'edit' => 'hotels.edit',
     'update' => 'hotels.update',
     'destroy' => 'hotels.destroy',
+]);
+
+Route::resource('reservations', ReservationController::class)->names([
+    'index' => 'reservations.index',
+    'create' => 'reservations.create',
+    'store' => 'reservations.store',
+    'show' => 'reservations.show',
+    'edit' => 'reservations.edit',
+    'update' => 'reservations.update',
+    'destroy' => 'reservations.destroy',
 ]);

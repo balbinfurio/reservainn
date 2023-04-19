@@ -40,17 +40,17 @@
 
                         <li><a href="{{ 'oe' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                           <div class="text-lg font-medium">
-                            Tickets
+                            Abonos
                           </div>
                         </a></li>
 
                         <li><a href="{{ 'oe' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                           <div class="text-lg font-medium">
-                            Clientes
+                            Tickets
                           </div>
                         </a></li>
 
-                        <li><a href="{{ 'oe' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
+                        <li><a href="{{ route('reservations.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                           <div class="text-lg font-medium">
                             Reservas
                           </div>
