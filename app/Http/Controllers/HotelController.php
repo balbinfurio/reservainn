@@ -31,6 +31,9 @@ class HotelController extends Controller
     {
         $hotels = new Hotel();
         $hotels->name = $request->get('name');
+        $hotels->address = $request->get('address');
+        $hotels->x1_cost_price = $request->get('x1_cost_price');
+        $hotels->x1_public_price = $request->get('x1_public_price');
 
         $hotels->save();
 
@@ -61,6 +64,9 @@ class HotelController extends Controller
     {
         $hotel = Hotel::find($id);
         $hotel->name = $request->get('name');
+        $hotel->address = $request->get('address');
+        $hotel->x1_cost_price = $request->get('x1_cost_price');
+        $hotel->x1_public_price = $request->get('x1_public_price');
 
         $hotel->save();
 
@@ -77,3 +83,4 @@ class HotelController extends Controller
         return redirect('/hotels');
     }
 }
+
