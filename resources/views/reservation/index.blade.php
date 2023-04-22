@@ -24,7 +24,12 @@
                 <tr>
                     <td>{{ $reservation->reservation_number }}</td>
                     <td>{{ $reservation->purchase_date }}</td>
-                    <td>{{ $reservation->agency ? $reservation->agency->name : 'Sin Agencia' }}</td>
+                    <td>{{ $reservation->agency ? $reservation->agency->name : 'Persona Natural' }}</td>
+                    <td>{{ $reservation->client_name }}</td>
+                    <td>{{ $reservation->document_number }}</td>
+                    <td>{{ $reservation->check_in }}</td>
+                    <td>{{ $reservation->check_out }}</td>
+                    <td>{{ $reservation->season }}</td>
 
                     {{-- <td>
                         <form action="{{ route('hotels.destroy', $hotel->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">

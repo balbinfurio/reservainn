@@ -36,14 +36,16 @@ class AgencyController extends Controller
         $agencies->NIT = $request->get('NIT');
         $agencies->address = $request->get('address');
         $agencies->phone = $request->get('phone');
+        $agencies->phone_op = $request->get('phone_op');
         $agencies->city = $request->get('city');
         $agencies->mail = $request->get('mail');
+        $agencies->mail_op = $request->get('mail_op');
 
-        $rules = [
-            'NIT' => ['required', 'regex:/^[0-9]{9}-[0-9]{1}$/']
-        ];
+        // $rules = [
+        //     'NIT' => ['required', 'regex:/^[0-9]{9}-[0-9]{1}$/']
+        // ];
 
-        $validatedData = $request->validate($rules);
+        // $validatedData = $request->validate($rules);
 
         $agencies->save();
 

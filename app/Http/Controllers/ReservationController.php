@@ -35,6 +35,11 @@ class ReservationController extends Controller
         $reservations->reservation_number = $request->get('reservation_number');
         $reservations->purchase_date = $request->get('purchase_date');
         $reservations->agency_id = $request->get('agency_id');
+        $reservations->client_name = $request->get('client_name');
+        $reservations->document_number = $request->get('document_number');
+        $reservations->check_in = $request->get('check_in');
+        $reservations->check_out = $request->get('check_out');
+        $reservations->season = $request->get('season');
         // $reservations->address = $request->get('address');
         // $reservations->phone = $request->get('phone');
         // $reservations->city = $request->get('city');
