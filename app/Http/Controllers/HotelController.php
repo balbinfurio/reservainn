@@ -34,6 +34,8 @@ class HotelController extends Controller
         $hotels->address = $request->get('address');
         $hotels->x1_cost_price = $request->get('x1_cost_price');
         $hotels->x1_public_price = $request->get('x1_public_price');
+        $hotels->x3_cost_price = $request->get('x3_cost_price');
+        $hotels->x3_public_price = $request->get('x3_public_price');
 
         $hotels->save();
 

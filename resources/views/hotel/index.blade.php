@@ -13,6 +13,8 @@
                     <th scope="col">Dirección</th>
                     <th scope="col">X1 PC</th>
                     <th scope="col">X1 PP</th>
+                    <th scope="col">X3 PC</th>
+                    <th scope="col">X3 PP</th>
                     <th scope="col">Acciones</th>
 
                 </tr>
@@ -24,6 +26,8 @@
                         <td>{{ $hotel->address }}</td>
                         <td>{{ $hotel->x1_cost_price }}</td>
                         <td>{{ $hotel->x1_public_price }}</td>
+                        <td>{{ $hotel->x3_cost_price }}</td>
+                        <td>{{ $hotel->x3_public_price }}</td>
                         <td>
                             <form action="{{ route('hotels.destroy', $hotel->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
                                 <a href="/hotels/{{ $hotel->id }}/edit" class="btn btn-info">Editar</a>
