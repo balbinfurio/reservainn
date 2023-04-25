@@ -34,35 +34,51 @@
         <input id="x1" name="x1" type="number" class="form-control" tabindex="5">
     </div>
     <div class="mb-3">
+        <label for="" class="form-label">X2</label>
+        <input id="x2" name="x2" type="number" class="form-control" tabindex="6">
+    </div>
+    <div class="mb-3">
         <label for="" class="form-label">X3</label>
-        <input id="x3" name="x3" type="number" class="form-control" tabindex="6">
+        <input id="x3" name="x3" type="number" class="form-control" tabindex="7">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X4</label>
+        <input id="x4" name="x4" type="number" class="form-control" tabindex="8">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X5</label>
+        <input id="x5" name="x5" type="number" class="form-control" tabindex="9">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X6</label>
+        <input id="x6" name="x6" type="number" class="form-control" tabindex="10">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Titular</label>
-        <input id="client_name" name="client_name" type="text" class="form-control" tabindex="7">
+        <input id="client_name" name="client_name" type="text" class="form-control" tabindex="11">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Documento de Identidad</label>
-        <input id="document_number" name="document_number" type="number" class="form-control" tabindex="8">
+        <input id="document_number" name="document_number" type="number" class="form-control" tabindex="12">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Ingreso</label>
-        <input id="check_in" name="check_in" type="datetime-local" class="form-control" tabindex="9">
+        <input id="check_in" name="check_in" type="datetime-local" class="form-control" tabindex="13">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Salida</label>
-        <input id="check_out" name="check_out" type="datetime-local" class="form-control" tabindex="10">
+        <input id="check_out" name="check_out" type="datetime-local" class="form-control" tabindex="14">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Temporada</label>
-        <select id="season" name="season" class="form-control" tabindex="11">
+        <select id="season" name="season" class="form-control" tabindex="15">
             <option value="alta">Alta</option>
             <option value="baja">Baja</option>
         </select>
     </div>
     
     
-    <button type="submit" class="btn btn-info" tabindex="12">Guardar</button>
+    <button type="submit" class="btn btn-info" tabindex="16">Guardar</button>
 </form>
 
 @endsection

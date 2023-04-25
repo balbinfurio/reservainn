@@ -13,7 +13,11 @@
                 <th scope="col">Agencia</th>
                 <th scope="col">Hotel</th>
                 <th scope="col">X1</th>
+                <th scope="col">X2</th>
                 <th scope="col">X3</th>
+                <th scope="col">X4</th>
+                <th scope="col">X5</th>
+                <th scope="col">X6</th>
                 <th scope="col">Titular</th>
                 <th scope="col">Documento</th>
                 <th scope="col">Ingreso</th>
@@ -31,7 +35,11 @@
                     <td>{{ $reservation->agency ? $reservation->agency->name : 'Persona Natural' }}</td>
                     <td>{{ $reservation->hotel ? $reservation->hotel->name : '-' }}</td>
                     <td>{{ $reservation->x1 }}</td>
+                    <td>{{ $reservation->x2 }}</td>
                     <td>{{ $reservation->x3 }}</td>
+                    <td>{{ $reservation->x4 }}</td>
+                    <td>{{ $reservation->x5 }}</td>
+                    <td>{{ $reservation->x6 }}</td>
                     <td>{{ $reservation->client_name }}</td>
                     <td>{{ $reservation->document_number }}</td>
                     <td>{{ $reservation->check_in }}</td>
