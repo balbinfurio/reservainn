@@ -44,6 +44,7 @@ class ReservationController extends Controller
         $reservations->x4 = $request->get('x4');
         $reservations->x5 = $request->get('x5');
         $reservations->x6 = $request->get('x6');
+        $reservations->kids_number = $request->get('kids_number');
         $reservations->client_name = $request->get('client_name');
         $reservations->document_number = $request->get('document_number');
         $reservations->check_in = $request->get('check_in');
@@ -58,14 +59,28 @@ class ReservationController extends Controller
         $public_price_x4 = $hotel->x4_public_price;
         $public_price_x5 = $hotel->x5_public_price;
         $public_price_x6 = $hotel->x6_public_price;
+        $kid_discount = $hotel->kid_discount; // porcentaje precio niño "30%"
+        $kid_price = $public_price_x1 - ($public_price_x1 * ($kid_discount / 100));
         $total_price = $public_price_x1 * $reservations->x1 + $public_price_x2 * $reservations->x2 + $public_price_x3 * $reservations->x3
-                        + $public_price_x4 * $reservations->x4 + $public_price_x5 * $reservations->x5 + $public_price_x6 * $reservations->x6;
+                        + $public_price_x4 * $reservations->x4 + $public_price_x5 * $reservations->x5 + $public_price_x6 * $reservations->x6
+                        + $kid_price * $reservations->kids_number;
         $reservations->total = $total_price;
 
+
+
         // variable experimento numero de habitaciones
+        $number_people_x1 = $reservations->x1;
+        $rooms_x1 = $number_people_x1 / 1;
+        $number_people_x2 = $reservations->x2;
+        $rooms_x2 = $number_people_x2 / 2;
         $number_people_x3 = $reservations->x3;
         $rooms_x3 = $number_people_x3 / 3;
+
+        // dd($rooms_x1.'x1 '  .  $rooms_x2.'x2 ' . $rooms_x3.'x3 ');
+
         //
+
+
 
         $reservations->save();
 

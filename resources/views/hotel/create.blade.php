@@ -60,8 +60,12 @@
         <label for="" class="form-label">X6 Precio Público</label>
         <input id="x6_public_price" name="x6_public_price" type="number" class="form-control" tabindex="14">
     </div>
-    <a href="/hotels" class="btn btn-secondary" tabindex="15">Cancelar</a>
-    <button type="submit" class="btn btn-info" tabindex="16">Guardar</button>
+    <div class="mb-3">
+        <label for="" class="form-label">Descuento Niños</label>
+        <input id="kid_discount" name="kid_discount" type="number" class="form-control" tabindex="15">
+    </div>
+    <a href="/hotels" class="btn btn-secondary" tabindex="16">Cancelar</a>
+    <button type="submit" class="btn btn-info" tabindex="17">Guardar</button>
 </form>
 
 @endsection

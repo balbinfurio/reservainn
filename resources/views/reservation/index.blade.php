@@ -18,6 +18,7 @@
                 <th scope="col">X4</th>
                 <th scope="col">X5</th>
                 <th scope="col">X6</th>
+                <th scope="col">#K</th>
                 <th scope="col">Titular</th>
                 <th scope="col">Documento</th>
                 <th scope="col">Ingreso</th>
@@ -40,6 +41,7 @@
                     <td>{{ $reservation->x4 }}</td>
                     <td>{{ $reservation->x5 }}</td>
                     <td>{{ $reservation->x6 }}</td>
+                    <td>{{ $reservation->kids_number }}</td>
                     <td>{{ $reservation->client_name }}</td>
                     <td>{{ $reservation->document_number }}</td>
                     <td>{{ $reservation->check_in }}</td>

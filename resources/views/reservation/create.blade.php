@@ -54,31 +54,35 @@
         <input id="x6" name="x6" type="number" class="form-control" tabindex="10">
     </div>
     <div class="mb-3">
+        <label for="" class="form-label"># Niños</label>
+        <input id="kids_number" name="kids_number" type="number" class="form-control" tabindex="11">
+    </div>
+    <div class="mb-3">
         <label for="" class="form-label">Titular</label>
-        <input id="client_name" name="client_name" type="text" class="form-control" tabindex="11">
+        <input id="client_name" name="client_name" type="text" class="form-control" tabindex="12">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Documento de Identidad</label>
-        <input id="document_number" name="document_number" type="number" class="form-control" tabindex="12">
+        <input id="document_number" name="document_number" type="number" class="form-control" tabindex="13">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Ingreso</label>
-        <input id="check_in" name="check_in" type="datetime-local" class="form-control" tabindex="13">
+        <input id="check_in" name="check_in" type="datetime-local" class="form-control" tabindex="14">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Salida</label>
-        <input id="check_out" name="check_out" type="datetime-local" class="form-control" tabindex="14">
+        <input id="check_out" name="check_out" type="datetime-local" class="form-control" tabindex="15">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Temporada</label>
-        <select id="season" name="season" class="form-control" tabindex="15">
+        <select id="season" name="season" class="form-control" tabindex="16">
             <option value="alta">Alta</option>
             <option value="baja">Baja</option>
         </select>
     </div>
     
     
-    <button type="submit" class="btn btn-info" tabindex="16">Guardar</button>
+    <button type="submit" class="btn btn-info" tabindex="17">Guardar</button>
 </form>
 
 @endsection
