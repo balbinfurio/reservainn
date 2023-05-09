@@ -12,7 +12,7 @@
     <title>ReservaInn</title>
   </head>
   <body class="dark-mode">
-    <h3 class="bg-dark text-white text-center">ReservaInn</h3>
+    <h1 class="bg-dark text-white text-center">ReservaInn</h1>
 
     <div class="container">
         @yield('content')

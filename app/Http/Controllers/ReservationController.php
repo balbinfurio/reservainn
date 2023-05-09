@@ -61,7 +61,18 @@ class ReservationController extends Controller
         $high_season_x5 = $hotel->x5_high_season;
         $high_season_x6 = $hotel->x6_high_season;
         $kid_discount = $hotel->kid_discount; // porcentaje precio niño "30%"
-        $kid_price = $high_season_x1 - ($high_season_x1 * ($kid_discount / 100));
+        $kid_price_high = $high_season_x1 - ($high_season_x1 * ($kid_discount / 100));
+
+        $low_season_x1 = $hotel->x1_low_season;
+        $low_season_x2 = $hotel->x2_low_season;
+        $low_season_x3 = $hotel->x3_low_season;
+        $low_season_x4 = $hotel->x4_low_season;
+        $low_season_x5 = $hotel->x5_low_season;
+        $low_season_x6 = $hotel->x6_low_season;
+        $kid_discount = $hotel->kid_discount; // porcentaje precio niño "30%"
+        $kid_price_low = $low_season_x1 - ($low_season_x1 * ($kid_discount / 100));
+
+        
 
 
         // formulita para sacar la fecha de temporada alta o baja
@@ -69,33 +80,23 @@ class ReservationController extends Controller
         $season_start_1 = $hotel->season_start_1;
         $season_end_1 = $hotel->season_end_1;
         $checkIn = Carbon::createFromFormat('Y-m-d', $request->input('purchase_date'));
-        $year = date('Y'); // Obtener el año actual
-        $seasonStart1 = Carbon::createFromFormat('m-d-Y', substr($season_start_1, 5) . '-' . $year);
-        $seasonEnd1 = Carbon::createFromFormat('m-d-Y', substr($season_end_1, 5) . '-' . $year);
+        $year = date('Y');
+        $seasonStart1 = Carbon::parse($season_start_1)->setYear($year)->startOfDay();
+        $seasonEnd1 = Carbon::parse($season_end_1)->setYear($year)->startOfDay();
 
         if ($checkIn->between($seasonStart1, $seasonEnd1)) {
+            // dd('Alta');
             $high_season_price = $high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
                         + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
-                        + $kid_price * $reservations->kids_number;
+                        + $kid_price_high * $reservations->kids_number;
             $reservations->total = $high_season_price;
         } else {
-            // aqui lo que hago es igualarlo a cero si la fecha esta por fuera de temp alta para ver si funciona
-            $low_season_price =  0;
+            // dd('Baja');
+            $low_season_price =  $low_season_x1 * $reservations->x1 + $low_season_x2 * $reservations->x2 + $low_season_x3 * $reservations->x3
+                        + $low_season_x4 * $reservations->x4 + $low_season_x5 * $reservations->x5 + $low_season_x6 * $reservations->x6
+                        + $kid_price_low * $reservations->kids_number;
             $reservations->total = $low_season_price;
         }
-        
-
-
-        
-
-
-        //
-
-        
-        // $high_season_price = $high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
-        //                 + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
-        //                 + $kid_price * $reservations->kids_number;
-        // $reservations->total = $high_season_price;
 
 
 
@@ -108,7 +109,7 @@ class ReservationController extends Controller
         $number_people_x3 = $reservations->x3;
         $rooms_x3 = ceil($number_people_x3 / 3);
 
-        dd($rooms_x1.'x1 '  .  $rooms_x2.'x2 ' . $rooms_x3.'x3 ');
+        // dd($rooms_x1.'x1 '  .  $rooms_x2.'x2 ' . $rooms_x3.'x3 ');
 
         //
 
