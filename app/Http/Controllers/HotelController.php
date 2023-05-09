@@ -33,17 +33,17 @@ class HotelController extends Controller
         $hotels->name = $request->get('name');
         $hotels->address = $request->get('address');
         $hotels->x1_cost_price = $request->get('x1_cost_price');
-        $hotels->x1_public_price = $request->get('x1_public_price');
+        $hotels->x1_high_season = $request->get('x1_high_season');
         $hotels->x2_cost_price = $request->get('x2_cost_price');
-        $hotels->x2_public_price = $request->get('x2_public_price');
+        $hotels->x2_high_season = $request->get('x2_high_season');
         $hotels->x3_cost_price = $request->get('x3_cost_price');
-        $hotels->x3_public_price = $request->get('x3_public_price');
+        $hotels->x3_high_season = $request->get('x3_high_season');
         $hotels->x4_cost_price = $request->get('x4_cost_price');
-        $hotels->x4_public_price = $request->get('x4_public_price');
+        $hotels->x4_high_season = $request->get('x4_high_season');
         $hotels->x5_cost_price = $request->get('x5_cost_price');
-        $hotels->x5_public_price = $request->get('x5_public_price');
+        $hotels->x5_high_season = $request->get('x5_high_season');
         $hotels->x6_cost_price = $request->get('x6_cost_price');
-        $hotels->x6_public_price = $request->get('x6_public_price');
+        $hotels->x6_high_season = $request->get('x6_high_season');
         $hotels->kid_discount = $request->get('kid_discount');
         $hotels->season_start_1 = $request->get('season_start_1');
         $hotels->season_end_1 = $request->get('season_end_1');
@@ -79,7 +79,7 @@ class HotelController extends Controller
         $hotel->name = $request->get('name');
         $hotel->address = $request->get('address');
         $hotel->x1_cost_price = $request->get('x1_cost_price');
-        $hotel->x1_public_price = $request->get('x1_public_price');
+        $hotel->x1_high_season = $request->get('x1_high_season');
 
         $hotel->save();
 

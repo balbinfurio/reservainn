@@ -54,14 +54,14 @@ class ReservationController extends Controller
 
         // migrar value de precio publico de x1, x2, x3.... para multiplcar por total de numeros de reserva de cada tipo de habitacion y obtener total
         $hotel = Hotel::find($request->get('hotel_id'));
-        $public_price_x1 = $hotel->x1_public_price;
-        $public_price_x2 = $hotel->x2_public_price;
-        $public_price_x3 = $hotel->x3_public_price;
-        $public_price_x4 = $hotel->x4_public_price;
-        $public_price_x5 = $hotel->x5_public_price;
-        $public_price_x6 = $hotel->x6_public_price;
+        $high_season_x1 = $hotel->x1_high_season;
+        $high_season_x2 = $hotel->x2_high_season;
+        $high_season_x3 = $hotel->x3_high_season;
+        $high_season_x4 = $hotel->x4_high_season;
+        $high_season_x5 = $hotel->x5_high_season;
+        $high_season_x6 = $hotel->x6_high_season;
         $kid_discount = $hotel->kid_discount; // porcentaje precio niño "30%"
-        $kid_price = $public_price_x1 - ($public_price_x1 * ($kid_discount / 100));
+        $kid_price = $high_season_x1 - ($high_season_x1 * ($kid_discount / 100));
 
 
         // formulita para sacar la fecha de temporada alta o baja
@@ -74,8 +74,8 @@ class ReservationController extends Controller
         $seasonEnd1 = Carbon::createFromFormat('m-d-Y', substr($season_end_1, 5) . '-' . $year);
 
         if ($checkIn->between($seasonStart1, $seasonEnd1)) {
-            $high_season_price = $public_price_x1 * $reservations->x1 + $public_price_x2 * $reservations->x2 + $public_price_x3 * $reservations->x3
-                        + $public_price_x4 * $reservations->x4 + $public_price_x5 * $reservations->x5 + $public_price_x6 * $reservations->x6
+            $high_season_price = $high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
+                        + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
                         + $kid_price * $reservations->kids_number;
             $reservations->total = $high_season_price;
         } else {
@@ -92,8 +92,8 @@ class ReservationController extends Controller
         //
 
         
-        // $high_season_price = $public_price_x1 * $reservations->x1 + $public_price_x2 * $reservations->x2 + $public_price_x3 * $reservations->x3
-        //                 + $public_price_x4 * $reservations->x4 + $public_price_x5 * $reservations->x5 + $public_price_x6 * $reservations->x6
+        // $high_season_price = $high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
+        //                 + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
         //                 + $kid_price * $reservations->kids_number;
         // $reservations->total = $high_season_price;
 
