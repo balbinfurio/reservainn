@@ -6,6 +6,7 @@ use App\Models\Reservation;
 use App\Models\Agency;
 use App\Models\Hotel;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -61,22 +62,53 @@ class ReservationController extends Controller
         $public_price_x6 = $hotel->x6_public_price;
         $kid_discount = $hotel->kid_discount; // porcentaje precio niño "30%"
         $kid_price = $public_price_x1 - ($public_price_x1 * ($kid_discount / 100));
-        $total_price = $public_price_x1 * $reservations->x1 + $public_price_x2 * $reservations->x2 + $public_price_x3 * $reservations->x3
+
+
+        // formulita para sacar la fecha de temporada alta o baja
+
+        $season_start_1 = $hotel->season_start_1;
+        $season_end_1 = $hotel->season_end_1;
+        $checkIn = Carbon::createFromFormat('Y-m-d', $request->input('purchase_date'));
+        $year = date('Y'); // Obtener el año actual
+        $seasonStart1 = Carbon::createFromFormat('m-d-Y', substr($season_start_1, 5) . '-' . $year);
+        $seasonEnd1 = Carbon::createFromFormat('m-d-Y', substr($season_end_1, 5) . '-' . $year);
+
+        if ($checkIn->between($seasonStart1, $seasonEnd1)) {
+            $high_season_price = $public_price_x1 * $reservations->x1 + $public_price_x2 * $reservations->x2 + $public_price_x3 * $reservations->x3
                         + $public_price_x4 * $reservations->x4 + $public_price_x5 * $reservations->x5 + $public_price_x6 * $reservations->x6
                         + $kid_price * $reservations->kids_number;
-        $reservations->total = $total_price;
+            $reservations->total = $high_season_price;
+        } else {
+            // aqui lo que hago es igualarlo a cero si la fecha esta por fuera de temp alta para ver si funciona
+            $low_season_price =  0;
+            $reservations->total = $low_season_price;
+        }
+        
+
+
+        
+
+
+        //
+
+        
+        // $high_season_price = $public_price_x1 * $reservations->x1 + $public_price_x2 * $reservations->x2 + $public_price_x3 * $reservations->x3
+        //                 + $public_price_x4 * $reservations->x4 + $public_price_x5 * $reservations->x5 + $public_price_x6 * $reservations->x6
+        //                 + $kid_price * $reservations->kids_number;
+        // $reservations->total = $high_season_price;
 
 
 
-        // variable experimento numero de habitaciones
+        // bloque experimento para sacar numero de habitaciones por cada tipo de habitacion "2x1 3x2 5x3" 
+
         $number_people_x1 = $reservations->x1;
-        $rooms_x1 = $number_people_x1 / 1;
+        $rooms_x1 = ceil($number_people_x1 / 1);
         $number_people_x2 = $reservations->x2;
-        $rooms_x2 = $number_people_x2 / 2;
+        $rooms_x2 = ceil($number_people_x2 / 2);
         $number_people_x3 = $reservations->x3;
-        $rooms_x3 = $number_people_x3 / 3;
+        $rooms_x3 = ceil($number_people_x3 / 3);
 
-        // dd($rooms_x1.'x1 '  .  $rooms_x2.'x2 ' . $rooms_x3.'x3 ');
+        dd($rooms_x1.'x1 '  .  $rooms_x2.'x2 ' . $rooms_x3.'x3 ');
 
         //
 

@@ -64,6 +64,18 @@
         <label for="" class="form-label">Descuento Niños</label>
         <input id="kid_discount" name="kid_discount" type="number" class="form-control" tabindex="15">
     </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Inicio Temporada Alta</label>
+        <input id="season_start_1" name="season_start_1" type="date" class="form-control" tabindex="5">
+    </div>
+    
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Fin Temporada Alta</label>
+        <input id="season_end_1" name="season_end_1" type="date" class="form-control" tabindex="6">
+    </div>
+    
+
     <a href="/hotels" class="btn btn-secondary" tabindex="16">Cancelar</a>
     <button type="submit" class="btn btn-info" tabindex="17">Guardar</button>
 </form>

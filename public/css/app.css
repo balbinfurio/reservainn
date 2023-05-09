@@ -60,3 +60,8 @@ h3 {
   background-color: #333333;
   color: #FFFFFF;
 }
+
+#logo {
+  width: 100px; /* Ancho deseado */
+  height: auto; /* Altura proporcional al ancho */
+}

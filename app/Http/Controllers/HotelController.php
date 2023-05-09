@@ -45,6 +45,8 @@ class HotelController extends Controller
         $hotels->x6_cost_price = $request->get('x6_cost_price');
         $hotels->x6_public_price = $request->get('x6_public_price');
         $hotels->kid_discount = $request->get('kid_discount');
+        $hotels->season_start_1 = $request->get('season_start_1');
+        $hotels->season_end_1 = $request->get('season_end_1');
 
         $hotels->save();
 
