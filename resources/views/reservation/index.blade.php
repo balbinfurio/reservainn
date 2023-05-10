@@ -23,8 +23,9 @@
                 <th scope="col">Documento</th>
                 <th scope="col">Ingreso</th>
                 <th scope="col">Salida</th>
-                <th scope="col">Temporada</th>
+                {{-- <th scope="col">Temporada</th> --}}
                 <th scope="col">Total</th>
+                <th scope="col">Acciones</th>
 
             </tr>
         </thead>
@@ -46,17 +47,17 @@
                     <td>{{ $reservation->document_number }}</td>
                     <td>{{ $reservation->check_in }}</td>
                     <td>{{ $reservation->check_out }}</td>
-                    <td>{{ $reservation->season }}</td>
+                    {{-- <td>{{ $reservation->season }}</td> --}}
                     <td>{{ $reservation->total }}</td>
 
-                    {{-- <td>
-                        <form action="{{ route('hotels.destroy', $hotel->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
-                            <a href="/hotels/{{ $hotel->id }}/edit" class="btn btn-info">Editar</a>
+                    <td>
+                        <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
+                            <a href="/reservations/{{ $reservation->id }}/edit" class="btn btn-info">Editar</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Borrar</button>
                         </form>
-                    </td> --}}
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -85,3 +86,4 @@
         </tbody>
 
 @endsection
+

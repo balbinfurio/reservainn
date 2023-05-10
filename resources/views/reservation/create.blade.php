@@ -73,29 +73,17 @@
         <label for="" class="form-label">Salida</label>
         <input id="check_out" name="check_out" type="datetime-local" class="form-control" tabindex="15">
     </div>
-    <div class="mb-3">
+    {{-- <div class="mb-3">
         <label for="" class="form-label">Temporada</label>
         <select id="season" name="season" class="form-control" tabindex="16">
             <option value="alta">Alta</option>
             <option value="baja">Baja</option>
         </select>
-    </div>
+    </div> --}}
     
     
     <button type="submit" class="btn btn-info" tabindex="17">Guardar</button>
 </form>
 
 @endsection
-{{--<div class="mb-3">
-    <label for="" class="form-label">Teléfono</label>
-    <input id="phone" name="phone" type="number" class="form-control" tabindex="4">
-</div>
-<div class="mb-3">
-    <label for="" class="form-label">Ciudad</label>
-    <input id="city" name="city" type="text" class="form-control" tabindex="5">
-</div>
-<div class="mb-3">
-    <label for="" class="form-label">Email</label>
-    <input id="mail" name="mail" type="text" class="form-control" tabindex="6">
-</div>
-<a href="/agencies" class="btn btn-secondary" tabindex="7">Cancelar</a> --}}
+

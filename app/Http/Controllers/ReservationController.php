@@ -79,24 +79,38 @@ class ReservationController extends Controller
 
         $season_start_1 = $hotel->season_start_1;
         $season_end_1 = $hotel->season_end_1;
-        $checkIn = Carbon::createFromFormat('Y-m-d', $request->input('purchase_date'));
-        $year = date('Y');
-        $seasonStart1 = Carbon::parse($season_start_1)->setYear($year)->startOfDay();
-        $seasonEnd1 = Carbon::parse($season_end_1)->setYear($year)->startOfDay();
+        $checkIn = Carbon::parse($request->input('check_in'));
 
-        if ($checkIn->between($seasonStart1, $seasonEnd1)) {
-            // dd('Alta');
-            $high_season_price = $high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
-                        + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
-                        + $kid_price_high * $reservations->kids_number;
-            $reservations->total = $high_season_price;
-        } else {
-            // dd('Baja');
-            $low_season_price =  $low_season_x1 * $reservations->x1 + $low_season_x2 * $reservations->x2 + $low_season_x3 * $reservations->x3
-                        + $low_season_x4 * $reservations->x4 + $low_season_x5 * $reservations->x5 + $low_season_x6 * $reservations->x6
-                        + $kid_price_low * $reservations->kids_number;
-            $reservations->total = $low_season_price;
-        }
+        
+        $currentYear = date('Y'); //año actual
+        $nextYear = Carbon::now()->addYear()->year; // año siguiente
+    
+        // Le asigno el año actual a las 2 variables de temporada alta
+        $seasonStart1 = Carbon::parse($season_start_1)->setYear($currentYear)->startOfDay();
+        $seasonEnd1 = Carbon::parse($season_end_1)->setYear($currentYear)->startOfDay();
+
+        // Le asigno el año siguiente al actual, a las 2 variables de temporada alta
+        $nextSeasonStart1 = Carbon::parse($season_start_1)->setYear($nextYear)->startOfDay();
+        $nextSeasonEnd1 = Carbon::parse($season_end_1)->setYear($nextYear)->startOfDay();
+
+        if(($checkIn->year == $currentYear && $checkIn->between($seasonStart1, $seasonEnd1))
+            || ($checkIn->year == $nextYear && $checkIn->between($nextSeasonStart1, $nextSeasonEnd1))) {
+                // dd('Alta');
+                $high_season_price = $high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
+                            + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
+                            + $kid_price_high * $reservations->kids_number;
+                $reservations->total = $high_season_price;
+            } else {
+                // dd('Baja');
+                $low_season_price =  $low_season_x1 * $reservations->x1 + $low_season_x2 * $reservations->x2 + $low_season_x3 * $reservations->x3
+                            + $low_season_x4 * $reservations->x4 + $low_season_x5 * $reservations->x5 + $low_season_x6 * $reservations->x6
+                            + $kid_price_low * $reservations->kids_number;
+                $reservations->total = $low_season_price;
+            }
+
+        
+
+       
 
 
 
@@ -150,7 +164,9 @@ class ReservationController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $reservation = Reservation::find($id);
+        $reservation->delete();
+        return redirect('/reservations');
     }
 }
 
