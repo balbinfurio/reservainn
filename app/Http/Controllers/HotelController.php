@@ -59,6 +59,12 @@ class HotelController extends Controller
         $hotels->kid_discount = $request->get('kid_discount');
         $hotels->season_start_1 = $request->get('season_start_1');
         $hotels->season_end_1 = $request->get('season_end_1');
+        $hotels->season_start_2 = $request->get('season_start_2');
+        $hotels->season_end_2 = $request->get('season_end_2');
+        $hotels->season_start_3 = $request->get('season_start_3');
+        $hotels->season_end_3 = $request->get('season_end_3');
+        $hotels->season_start_4 = $request->get('season_start_4');
+        $hotels->season_end_4 = $request->get('season_end_4');
 
         $hotels->save();
 

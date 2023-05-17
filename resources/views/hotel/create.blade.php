@@ -115,13 +115,43 @@
     </div>
 
     <div class="mb-3">
-        <label for="" class="form-label">Fecha Inicio Temporada Alta</label>
+        <label for="" class="form-label">Fecha Inicio Temporada Alta 1</label>
         <input id="season_start_1" name="season_start_1" type="date" class="form-control" tabindex="5">
     </div>
     
     <div class="mb-3">
-        <label for="" class="form-label">Fecha Fin Temporada Alta</label>
+        <label for="" class="form-label">Fecha Fin Temporada Alta 1</label>
         <input id="season_end_1" name="season_end_1" type="date" class="form-control" tabindex="6">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Inicio Temporada Alta 2</label>
+        <input id="season_start_2" name="season_start_2" type="date" class="form-control" tabindex="5">
+    </div>
+    
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Fin Temporada Alta 2</label>
+        <input id="season_end_2" name="season_end_2" type="date" class="form-control" tabindex="6">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Inicio Temporada Alta 3</label>
+        <input id="season_start_3" name="season_start_3" type="date" class="form-control" tabindex="5">
+    </div>
+    
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Fin Temporada Alta 3</label>
+        <input id="season_end_3" name="season_end_3" type="date" class="form-control" tabindex="6">
+    </div>
+
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Inicio Temporada Alta 4</label>
+        <input id="season_start_4" name="season_start_4" type="date" class="form-control" tabindex="5">
+    </div>
+    
+    <div class="mb-3">
+        <label for="" class="form-label">Fecha Fin Temporada Alta 4</label>
+        <input id="season_end_4" name="season_end_4" type="date" class="form-control" tabindex="6">
     </div>
     
 
