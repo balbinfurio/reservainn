@@ -14,8 +14,12 @@
         <input id="address" name="address" type="text" class="form-control" tabindex="2" required>
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X1 Precio Coste</label>
-        <input id="x1_cost_price" name="x1_cost_price" type="number" class="form-control" tabindex="3">
+        <label for="" class="form-label">X1 Precio Coste Alta</label>
+        <input id="x1_cost_price_high" name="x1_cost_price_high" type="number" class="form-control" tabindex="3">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X1 Precio Coste Baja</label>
+        <input id="x1_cost_price_low" name="x1_cost_price_low" type="number" class="form-control" tabindex="3">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">X1 Precio Alta</label>
@@ -26,8 +30,12 @@
         <input id="x1_low_season" name="x1_low_season" type="number" class="form-control" tabindex="4">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X2 Precio Coste</label>
-        <input id="x2_cost_price" name="x2_cost_price" type="number" class="form-control" tabindex="5">
+        <label for="" class="form-label">X2 Precio Coste Baja</label>
+        <input id="x2_cost_price_high" name="x2_cost_price_high" type="number" class="form-control" tabindex="5">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X2 Precio Coste Baja</label>
+        <input id="x2_cost_price_low" name="x2_cost_price_low" type="number" class="form-control" tabindex="3">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">X2 Precio Alta</label>
@@ -38,8 +46,12 @@
         <input id="x2_low_season" name="x2_low_season" type="number" class="form-control" tabindex="4">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X3 Precio Coste</label>
-        <input id="x3_cost_price" name="x3_cost_price" type="number" class="form-control" tabindex="7">
+        <label for="" class="form-label">X3 Precio Coste Alta</label>
+        <input id="x3_cost_price_high" name="x3_cost_price_high" type="number" class="form-control" tabindex="7">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X3 Precio Coste Baja</label>
+        <input id="x3_cost_price_low" name="x3_cost_price_low" type="number" class="form-control" tabindex="3">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">X3 Precio Alta</label>
@@ -50,8 +62,12 @@
         <input id="x3_low_season" name="x3_low_season" type="number" class="form-control" tabindex="4">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X4 Precio Coste</label>
-        <input id="x3_cost_price" name="x4_cost_price" type="number" class="form-control" tabindex="9">
+        <label for="" class="form-label">X4 Precio Coste Alta</label>
+        <input id="x4_cost_price_high" name="x4_cost_price_high" type="number" class="form-control" tabindex="9">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X4 Precio Coste Baja</label>
+        <input id="x4_cost_price_low" name="x4_cost_price_low" type="number" class="form-control" tabindex="3">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">X4 Precio Alta</label>
@@ -62,8 +78,12 @@
         <input id="x4_low_season" name="x4_low_season" type="number" class="form-control" tabindex="4">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X5 Precio Coste</label>
-        <input id="x5_cost_price" name="x5_cost_price" type="number" class="form-control" tabindex="11">
+        <label for="" class="form-label">X5 Precio Coste Alta</label>
+        <input id="x5_cost_price_high" name="x5_cost_price_high" type="number" class="form-control" tabindex="11">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X5 Precio Coste Baja</label>
+        <input id="x5_cost_price_low" name="x5_cost_price_low" type="number" class="form-control" tabindex="3">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">X5 Precio Alta</label>
@@ -74,8 +94,12 @@
         <input id="x5_low_season" name="x5_low_season" type="number" class="form-control" tabindex="4">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X6 Precio Coste</label>
-        <input id="x6_cost_price" name="x6_cost_price" type="number" class="form-control" tabindex="13">
+        <label for="" class="form-label">X6 Precio Coste Alta</label>
+        <input id="x6_cost_price_high" name="x6_cost_price_high" type="number" class="form-control" tabindex="13">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">X6 Precio Coste Baja</label>
+        <input id="x6_cost_price_low" name="x6_cost_price_low" type="number" class="form-control" tabindex="3">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">X6 Precio Alta</label>

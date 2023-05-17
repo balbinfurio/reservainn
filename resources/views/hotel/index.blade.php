@@ -15,7 +15,6 @@
                     <th scope="col">Dirección</th>
                     
                     <th scope="col">X1 Alta</th>
-                    {{-- <th scope="col">X1 Baja</th> --}}
                     
                     <th scope="col">X2 Alta</th>
                     
@@ -38,7 +37,6 @@
                         <td>{{ $hotel->address }}</td>
                         
                         <td>{{ $hotel->x1_high_season }}</td>
-                        {{-- <td>{{ $hotel->x1_low_season }}</td> --}}
                         
                         <td>{{ $hotel->x2_high_season }}</td>
                         
@@ -117,20 +115,23 @@
                 <tr>
                     <th scope="col">Nombre</th>
                     
-                    <th scope="col">X1 P. Coste</th>
+                    <th scope="col">X1 Coste Alta</th>
+                    <th scope="col">X1 Coste Baja</th>
                     
-                    <th scope="col">X2 P. Coste</th>
+                    <th scope="col">X2 Coste Alta</th>
+                    <th scope="col">X2 Coste Baja</th>
                     
-                    <th scope="col">X3 P. Coste</th>
+                    <th scope="col">X3 Coste Alta</th>
+                    <th scope="col">X3 Coste Baja</th>
                    
-                    <th scope="col">X4 P. Coste</th>
+                    <th scope="col">X4 Coste Alta</th>
+                    <th scope="col">X4 Coste Baja</th>
                     
-                    <th scope="col">X5 P. Coste</th>
+                    <th scope="col">X5 Coste Alta</th>
+                    <th scope="col">X5 Coste Baja</th>
                     
-                    <th scope="col">X6 P. Coste</th>
-                    
-                    
-                    <th scope="col">Acciones</th>
+                    <th scope="col">X6 Coste Alta</th>
+                    <th scope="col">X6 Coste Baja</th>
 
                 </tr>
             </thead>
@@ -139,27 +140,33 @@
                     <tr>
                         <td>{{ $hotel->name }}</td>
                         
-                        <td>{{ $hotel->x1_cost_price }}</td>
+                        <td>{{ $hotel->x1_cost_price_high }}</td>
+                        <td>{{ $hotel->x1_cost_price_low }}</td>
                         
-                        <td>{{ $hotel->x2_cost_price }}</td>
+                        <td>{{ $hotel->x2_cost_price_high }}</td>
+                        <td>{{ $hotel->x2_cost_price_low }}</td>
                         
-                        <td>{{ $hotel->x3_cost_price }}</td>
+                        <td>{{ $hotel->x3_cost_price_high }}</td>
+                        <td>{{ $hotel->x3_cost_price_low }}</td>
                         
-                        <td>{{ $hotel->x4_cost_price }}</td>
+                        <td>{{ $hotel->x4_cost_price_high }}</td>
+                        <td>{{ $hotel->x4_cost_price_low }}</td>
                         
-                        <td>{{ $hotel->x5_cost_price }}</td>
+                        <td>{{ $hotel->x5_cost_price_high }}</td>
+                        <td>{{ $hotel->x5_cost_price_low }}</td>
                         
-                        <td>{{ $hotel->x6_cost_price }}</td>
+                        <td>{{ $hotel->x6_cost_price_high }}</td>
+                        <td>{{ $hotel->x6_cost_price_low }}</td>
                         
                         
-                        <td>
+                        {{-- <td>
                             <form action="{{ route('hotels.destroy', $hotel->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
                                 <a href="/hotels/{{ $hotel->id }}/edit" class="btn btn-info">Editar</a>
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Borrar</button>
                             </form>
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>
