@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\CityController;
+use App\Models\City;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,8 @@ use App\Http\Controllers\ReservationController;
 */
 
 Route::get('dashboard', function () {
-    return view('welcome');
+    $cities = City::all();
+    return view('welcome')->with('cities', $cities);
 })->name('dashboard');
 
 Route::resource('agencies', AgencyController::class)->names([
@@ -48,4 +51,14 @@ Route::resource('reservations', ReservationController::class)->names([
     'edit' => 'reservations.edit',
     'update' => 'reservations.update',
     'destroy' => 'reservations.destroy',
+]);
+
+Route::resource('cities', CityController::class)->names([
+    'index' => 'cities.index',
+    'create' => 'cities.create',
+    'store' => 'cities.store',
+    'show' => 'cities.show',
+    'edit' => 'cities.edit',
+    'update' => 'cities.update',
+    'destroy' => 'cities.destroy',
 ]);

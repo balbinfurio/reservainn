@@ -2,34 +2,35 @@
 
 @section('content')
 
-    {{-- <div class="min-h-screen bg-gray-100 dark:bg-gray-800">
-        <div class="bg-indigo-600 dark:bg-indigo-500">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold text-white">
-                    Reserva Inn
-                </h1>
-            </div>
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-                  <a href="{{ 'clientes.index' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
-                    <div class="text-lg font-medium">
-                      Clientes
-                    </div>
-                  </a>
-                  <a href="{{ 'reservas.index' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
-                    <div class="text-lg font-medium">
-                      Reservas
-                    </div>
-                  </a>
-                  <a href="{{ 'tickets.index' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
-                    <div class="text-lg font-medium">
-                      Tickets
-                    </div>
-                  </a>
-                </div>
-            </div>
-              
-        </div> --}}
+  <h3 class="bg-dark text-white text-center">CIUDADES</h3>
+    <a href="cities/create" class="btn btn-dark">CREATE</a>
+
+    <div style="overflow-x:auto;">
+        <br>
+        <table class="table table-dark table-striped mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($cities as $city)
+                    <tr>
+                        <td>{{ $city->name }}</td>
+                        
+                        <td>
+                            <form action="{{ route('cities.destroy', $city->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
+                                <a href="/cities/{{ $city->id }}/edit" class="btn btn-info">Editar</a>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Borrar</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
