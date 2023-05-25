@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tour;
 use App\Models\City;
+use App\Models\Hotel;
 
 class TourController extends Controller
 {
@@ -72,4 +73,17 @@ class TourController extends Controller
     {
         //
     }
+
+    // public function getAvailableTours($hotelId)
+    // {
+    //     $hotel = Hotel::find($hotelId);
+    //     $cityId = $hotel->city_id;
+    //     $tours = Tour::where('city_id', $cityId)->get();
+
+    //     return response()->json(['tours' => $tours]);
+    // }
+
+
+
+
 }

@@ -74,3 +74,6 @@ Route::resource('tours', TourController::class)->names([
     'update' => 'tours.update',
     'destroy' => 'tours.destroy',
 ]);
+
+Route::get('/reservations/{hotelId}/available', 'ReservationController@getAvailableTours');
+

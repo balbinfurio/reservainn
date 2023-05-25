@@ -25,10 +25,60 @@
         <label for="hotel_id" class="form-label">Hotel</label>
         <select id="hotel_id" name="hotel_id" class="form-control" tabindex="4">
             @foreach($hotels as $hotel)
-                <option value="{{ $hotel->id }}">{{ $hotel->name }}</option>
+                <option value="{{ $hotel->city_id }}">{{ $hotel->name }}</option>
             @endforeach
         </select>
     </div>
+    
+    <div class="mb-3">
+        <label for="tour_id" class="form-label">Tour</label>
+        <select id="tour_id" name="tour_id" class="form-control" tabindex="5">
+            <option value="">Seleccione un tour</option>
+            @foreach ($tours as $tour)
+                <option value="{{ $tour->id }}">{{ $tour->name }}</option>
+            @endforeach
+        </select>
+    </div>
+    
+    <script>
+        // Obtener los tours disponibles en la página inicial
+        var availableTours = {!! json_encode($tours->toArray()) !!};
+    
+        // Evento onchange del campo de selección de hoteles
+        $('#hotel_id').change(function() {
+            var selectedCity = $(this).val();
+
+            console.log(selectedCity)
+
+            var filteredTours = availableTours.filter(function(tour) {
+                return tour.city_id == selectedCity;
+            });
+    
+            // Actualizar el campo de selección de tours con las opciones filtradas
+            var tourSelect = $('#tour_id');
+            tourSelect.empty();
+            tourSelect.append('<option value="">Seleccione un tour</option>');
+            $.each(filteredTours, function(index, tour) {
+                tourSelect.append($('<option></option>').attr('value', tour.id).text(tour.name));
+            });
+        });
+    </script>
+
+
+
+
+    {{-- <select name="tour_id">
+        <option value="">Seleccione un tour</option>
+        @foreach ($tours as $tour)
+            <option value="{{ $tour->id }}">{{ $tour->name }}</option>
+        @endforeach
+    </select> --}}
+    
+    
+    
+    
+    
+
     <div class="mb-3">
         <label for="" class="form-label">X1</label>
         <input id="x1" name="x1" type="number" class="form-control" tabindex="5">
@@ -86,4 +136,34 @@
 </form>
 
 @endsection
+
+{{-- @section('scripts')
+<script>
+$(document).ready(function() {
+    $('#hotel_id').change(function() {
+        var hotelId = $(this).val();
+
+        // Realiza una solicitud AJAX para obtener los tours disponibles
+        $.ajax({
+            url: '/reservations/' + hotelId + '/available',
+            type: 'GET',
+            success: function(response) {
+                var tours = response.tours;
+
+                // Actualiza el campo de selección de tours con las opciones disponibles
+                var tourSelect = $('#tour_id');
+                tourSelect.empty();
+                $.each(tours, function(index, tour) {
+                    tourSelect.append($('<option></option>').attr('value', tour.id).text(tour.name));
+                });
+            },
+            error: function() {
+                // Maneja el error de la solicitud AJAX
+            }
+        });
+    });
+});
+</script>
+@endsection --}}
+
 

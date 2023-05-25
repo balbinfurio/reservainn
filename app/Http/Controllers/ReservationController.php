@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Reservation;
 use App\Models\Agency;
 use App\Models\Hotel;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -26,7 +27,8 @@ class ReservationController extends Controller
     {
         $agencies = Agency::all();
         $hotels = Hotel::all();
-        return view('reservation.create', compact('agencies', 'hotels'));
+        $tours = Tour::all();
+        return view('reservation.create', compact('agencies', 'hotels', 'tours'));
     }
 
     /**
@@ -144,12 +146,12 @@ class ReservationController extends Controller
 
         // Calcular el precio en función de la temporada
         if ($inHighSeason) {
-            dd('Alta');
+            // dd('Alta');
             $reservations->total = $high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
                                     + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
                                     + $kid_price_high * $reservations->kids_number;
         } else {
-            dd('Baja');
+            // dd('Baja');
             $reservations->total = $defaultPrice;
         }
 
@@ -200,12 +202,29 @@ class ReservationController extends Controller
 
         //
 
+        
+        
+        // Obtén el ID del hotel seleccionado (puedes obtenerlo de la solicitud o desde el formulario)
+        $hotelId = request()->input('hotel_id');
+
+        // Obtén la ciudad correspondiente al hotel
+        $hotel = Hotel::find($hotelId);
+        $cityId = $hotel->city_id;
+
+        // Obtén los tours disponibles para esa ciudad
+        $tours = Tour::where('city_id', $cityId)->get();
+
+        // dd($tours);
+
+        $cityId = $hotel->city_id;
+
 
 
         $reservations->save();
 
-        return redirect('/reservations');
-        // return redirect()->route('reservations.index')->with('success', 'Reservation created successfully.');
+        return redirect('/reservations')->with(compact('tours'));
+
+        
     }
 
     /**
@@ -241,5 +260,20 @@ class ReservationController extends Controller
         $reservation->delete();
         return redirect('/reservations');
     }
+
+
+    // public function getAvailableTours($hotelId)
+    // {
+    //     $hotel = Hotel::find($hotelId);
+    //     if (!$hotel) {
+    //         return response()->json(['error' => 'Hotel not found'], 404);
+    //     }
+
+    //     $cityId = $hotel->city_id;
+    //     $tours = Tour::where('city_id', $cityId)->get();
+
+    //     return response()->json(['tours' => $tours]);
+    // }
+
 }
 

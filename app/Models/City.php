@@ -9,8 +9,8 @@ class City extends Model
 {
     use HasFactory;
 
-    public function tour()
+    public function tours()
     {
-        return $this->hasMany(Tour::class);
+        return $this->hasMany(Tour::class, 'city_id', 'id');
     }
 }
