@@ -5,6 +5,8 @@ use App\Http\Controllers\AgencyController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\TourController;
+
 use App\Models\City;
 
 /*
@@ -61,4 +63,14 @@ Route::resource('cities', CityController::class)->names([
     'edit' => 'cities.edit',
     'update' => 'cities.update',
     'destroy' => 'cities.destroy',
+]);
+
+Route::resource('tours', TourController::class)->names([
+    'index' => 'tours.index',
+    'create' => 'tours.create',
+    'store' => 'tours.store',
+    'show' => 'tours.show',
+    'edit' => 'tours.edit',
+    'update' => 'tours.update',
+    'destroy' => 'tours.destroy',
 ]);

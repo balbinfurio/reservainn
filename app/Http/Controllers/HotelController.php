@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Hotel;
+use App\Models\City;
 
 class HotelController extends Controller
 {
@@ -21,7 +22,10 @@ class HotelController extends Controller
      */
     public function create()
     {
-        return view('hotel.create');
+
+        $cities = City::all();
+        return view('hotel.create', compact('cities'));
+
     }
 
     /**
@@ -32,6 +36,7 @@ class HotelController extends Controller
         $hotels = new Hotel();
         $hotels->name = $request->get('name');
         $hotels->address = $request->get('address');
+        $hotels->city_id = $request->get('city_id');
         $hotels->x1_cost_price_high = $request->get('x1_cost_price_high');
         $hotels->x1_cost_price_low = $request->get('x1_cost_price_low');
         $hotels->x1_high_season = $request->get('x1_high_season');
@@ -96,6 +101,7 @@ class HotelController extends Controller
         $hotel = Hotel::find($id);
         $hotel->name = $request->get('name');
         $hotel->address = $request->get('address');
+        $hotel->city_id = $request->get('city_id');
         $hotel->x1_cost_price_high = $request->get('x1_cost_price_high');
         $hotel->x1_cost_price_low = $request->get('x1_cost_price_low');
         $hotel->x1_high_season = $request->get('x1_high_season');

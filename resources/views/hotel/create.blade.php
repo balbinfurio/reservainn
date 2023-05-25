@@ -13,6 +13,16 @@
         <label for="" class="form-label">Dirección</label>
         <input id="address" name="address" type="text" class="form-control" tabindex="2" required>
     </div>
+
+    <div class="mb-3">
+        <label for="city_id" class="form-label">Ciudad</label>
+        <select id="city_id" name="city_id" class="form-control" tabindex="3">
+            @foreach($cities as $city)
+                <option value="{{ $city->id }}">{{ $city->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
     <div class="mb-3">
         <label for="" class="form-label">X1 Precio Coste Alta</label>
         <input id="x1_cost_price_high" name="x1_cost_price_high" type="number" class="form-control" tabindex="3">

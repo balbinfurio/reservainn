@@ -42,6 +42,12 @@
                           </div>
                         </a></li>
 
+                        <li><a href="{{ route('tours.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
+                          <div class="text-lg font-medium">
+                            Tours
+                          </div>
+                        </a></li>
+
                         <li><a href="{{ 'oe' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                           <div class="text-lg font-medium">
                             Abonos
