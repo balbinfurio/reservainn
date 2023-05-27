@@ -6,6 +6,7 @@ use App\Models\Reservation;
 use App\Models\Agency;
 use App\Models\Hotel;
 use App\Models\Tour;
+use App\Models\City;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
@@ -285,6 +286,23 @@ class ReservationController extends Controller
         // Obtener los datos de la reserva desde la base de datos
         $reservation = Reservation::find($reservationId);
         $hotel = Hotel::find($reservation->hotel_id);
+        // $city = City::all();
+        // $agency = Agency::all();
+
+        // Obtener el base64 de la imagen subida
+        $imageBase64 = $hotel->logo;
+
+        // Verificar si la imagen existe
+        if ($imageBase64) {
+            $logo = $imageBase64;
+            $logo = 'data:image/jpeg;base64,' . $logo;
+
+        } else {
+            // Establecer una imagen de reemplazo en caso de que la imagen no exista
+            $logo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
+        }
+
+        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/star.png')));
 
         $number_people_x1 = $reservation->x1;
         $rooms_x1 = ceil($number_people_x1 / 1);
@@ -298,14 +316,14 @@ class ReservationController extends Controller
         $rooms_x5 = ceil($number_people_x5 / 5);
         $number_people_x6 = $reservation->x6;
         $rooms_x6 = ceil($number_people_x6 / 6);
-
+        
         // Crear una instancia de Dompdf con las opciones de configuración
         $options = new Options();
         $options->set('defaultFont', 'Arial');
         $dompdf = new Dompdf($options);
-
+        
         // Generar el contenido HTML del PDF
-        $html = view('reservation.pdf', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6'))->render();
+        $html = view('reservation.pdf', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo'))->render();
 
         // Cargar el contenido HTML en Dompdf
         $dompdf->loadHtml($html);

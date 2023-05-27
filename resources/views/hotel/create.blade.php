@@ -3,7 +3,7 @@
 @section('content')
 <h4> CREAR HOTEL </h4>
 
-<form action="/hotels" method="POST">
+<form action="/hotels" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">
         <label for="" class="form-label">Nombre</label>
@@ -163,6 +163,12 @@
         <label for="" class="form-label">Fecha Fin Temporada Alta 4</label>
         <input id="season_end_4" name="season_end_4" type="date" class="form-control" tabindex="6">
     </div>
+
+    <div class="mb-3">
+        <label for="logo" class="form-label">Logo</label>
+        <input id="logo" name="logo" type="file" class="form-control" tabindex="3" accept="image/*">
+    </div>
+    
     
 
     <a href="/hotels" class="btn btn-secondary" tabindex="16">Cancelar</a>

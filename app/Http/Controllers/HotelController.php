@@ -71,6 +71,17 @@ class HotelController extends Controller
         $hotels->season_start_4 = $request->get('season_start_4');
         $hotels->season_end_4 = $request->get('season_end_4');
 
+
+        //bloque de codigo para el logo
+
+        if ($request->hasFile('logo')) {
+            $image = $request->file('logo');
+            $imageData = base64_encode(file_get_contents($image->getPathname()));
+            $hotels->logo = $imageData;
+        }
+        
+        
+        
         $hotels->save();
 
         return redirect('/hotels');
