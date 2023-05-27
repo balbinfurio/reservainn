@@ -75,5 +75,9 @@ Route::resource('tours', TourController::class)->names([
     'destroy' => 'tours.destroy',
 ]);
 
-Route::get('/reservations/{hotelId}/available', 'ReservationController@getAvailableTours');
+// Route::get('/reservations/{hotelId}/available', 'ReservationController@getAvailableTours');
+
+Route::get('reservations/{reservationId}/pdf', [ReservationController::class, 'generatePDF'])->name('reservations.pdf');
+
+
 

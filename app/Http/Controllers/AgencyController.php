@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use PhpParser\Node\Stmt\Return_;
 use App\Models\Agency;
+use Dompdf\Dompdf;
 
 class AgencyController extends Controller
 {
@@ -103,4 +104,28 @@ class AgencyController extends Controller
         $agency->delete();
         return redirect('/agencies');
     }
+
+    // public function generatePDF($agencyId)
+    // {
+    //     // Obtener los datos de la reserva utilizando el ID
+    //     $agency = Agency::find($agencyId);
+
+    //     // Crear una instancia de Dompdf
+    //     $dompdf = new Dompdf();
+
+    //     // Cargar el contenido HTML del PDF utilizando los datos de la reserva
+    //     $html = '<h1>Detalles de la reserva</h1>';
+    //     $html .= '<p>Nombre de Agencia: ' . $agency->name . '</p>';
+    //     // Agregar más contenido HTML con los datos de la reserva
+
+    //     // Generar el PDF
+    //     $dompdf->loadHtml($html);
+    //     $dompdf->setPaper('A4', 'portrait');
+    //     $dompdf->render();
+
+    //     // Enviar el PDF al navegador para su descarga
+    //     return $dompdf->stream('reserva_' . $agencyId . '.pdf');
+    // }
+
 }
+

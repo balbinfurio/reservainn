@@ -33,4 +33,10 @@
     <a href="/agencies" class="btn btn-secondary" tabindex="7">Cancelar</a>
     <button type="submit" class="btn btn-info" tabindex="8">Guardar</button>
 </form>
+
+{{-- <form action="{{ route('agency.pdf', $agency->id) }}" method="POST">
+    @csrf
+    <button type="submit">Descargar PDF</button>
+</form> --}}
+
 @endsection

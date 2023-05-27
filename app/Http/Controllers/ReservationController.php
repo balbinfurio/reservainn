@@ -8,6 +8,8 @@ use App\Models\Hotel;
 use App\Models\Tour;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class ReservationController extends Controller
 {
@@ -41,6 +43,7 @@ class ReservationController extends Controller
         $reservations->purchase_date = $request->get('purchase_date');
         $reservations->agency_id = $request->get('agency_id');
         $reservations->hotel_id = $request->get('hotel_id');
+        $reservations->tour_id = $request->get('tour_id');
         $reservations->x1 = $request->get('x1');
         $reservations->x2 = $request->get('x2');
         $reservations->x3 = $request->get('x3');
@@ -56,6 +59,7 @@ class ReservationController extends Controller
 
         // migrar value de precio publico de x1, x2, x3.... para multiplcar por total de numeros de reserva de cada tipo de habitacion y obtener total
         $hotel = Hotel::find($request->get('hotel_id'));
+        // dd($hotel);
         $high_season_x1 = $hotel->x1_high_season;
         $high_season_x2 = $hotel->x2_high_season;
         $high_season_x3 = $hotel->x3_high_season;
@@ -240,7 +244,8 @@ class ReservationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $reservation = reservation::find($id);
+        return view('reservation.edit')->with('reservation', $reservation);
     }
 
     /**
@@ -274,6 +279,46 @@ class ReservationController extends Controller
 
     //     return response()->json(['tours' => $tours]);
     // }
+
+    public function generatePDF($reservationId)
+    {
+        // Obtener los datos de la reserva desde la base de datos
+        $reservation = Reservation::find($reservationId);
+        $hotel = Hotel::find($reservation->hotel_id);
+
+        $number_people_x1 = $reservation->x1;
+        $rooms_x1 = ceil($number_people_x1 / 1);
+        $number_people_x2 = $reservation->x2;
+        $rooms_x2 = ceil($number_people_x2 / 2);
+        $number_people_x3 = $reservation->x3;
+        $rooms_x3 = ceil($number_people_x3 / 3);
+        $number_people_x4 = $reservation->x4;
+        $rooms_x4 = ceil($number_people_x4 / 4);
+        $number_people_x5 = $reservation->x5;
+        $rooms_x5 = ceil($number_people_x5 / 5);
+        $number_people_x6 = $reservation->x6;
+        $rooms_x6 = ceil($number_people_x6 / 6);
+
+        // Crear una instancia de Dompdf con las opciones de configuración
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+        $dompdf = new Dompdf($options);
+
+        // Generar el contenido HTML del PDF
+        $html = view('reservation.pdf', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6'))->render();
+
+        // Cargar el contenido HTML en Dompdf
+        $dompdf->loadHtml($html);
+
+        // Renderizar el PDF
+        $dompdf->render();
+
+        // Generar el nombre del archivo PDF
+        $fileName = 'reservation_' . $reservationId . '.pdf';
+
+        // Descargar el PDF en el navegador del usuario
+        return $dompdf->stream($fileName);
+    }
 
 }
 

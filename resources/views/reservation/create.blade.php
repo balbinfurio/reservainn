@@ -25,9 +25,9 @@
         <label for="hotel_id" class="form-label">Hotel</label>
         <select id="hotel_id" name="hotel_id" class="form-control" tabindex="4">
             @foreach($hotels as $hotel)
-                <option value="{{ $hotel->city_id }}">{{ $hotel->name }}</option>
+                <option value="{{ $hotel->id }}" data-city-id="{{ $hotel->city_id }}">{{ $hotel->name }}</option>
             @endforeach
-        </select>
+        </select>        
     </div>
     
     <div class="mb-3">
@@ -46,9 +46,11 @@
     
         // Evento onchange del campo de selección de hoteles
         $('#hotel_id').change(function() {
-            var selectedCity = $(this).val();
+            var selectedCity = $(this).find(':selected').data('city-id');
+            var selectedHotelId = $(this).val();
 
-            console.log(selectedCity)
+
+            // console.log(selectedCity)
 
             var filteredTours = availableTours.filter(function(tour) {
                 return tour.city_id == selectedCity;
@@ -63,16 +65,6 @@
             });
         });
     </script>
-
-
-
-
-    {{-- <select name="tour_id">
-        <option value="">Seleccione un tour</option>
-        @foreach ($tours as $tour)
-            <option value="{{ $tour->id }}">{{ $tour->name }}</option>
-        @endforeach
-    </select> --}}
     
     
     
