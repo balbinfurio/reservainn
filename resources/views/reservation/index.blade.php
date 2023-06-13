@@ -63,27 +63,5 @@
         </tbody>
     </table>
 
-    <table class="table table-dark table-striped mt-4">
-        <thead>
-            <tr>
-                <th scope="col">Número Reserva</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($reservations as $reservation)
-                <tr>
-                    <td>{{ $reservation->reservation_number }}</td>
-                    {{-- <td>
-                        <form action="{{ route('hotels.destroy', $hotel->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
-                            <a href="/hotels/{{ $hotel->id }}/edit" class="btn btn-info">Editar</a>
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Borrar</button>
-                        </form>
-                    </td> --}}
-                </tr>
-            @endforeach
-        </tbody>
-
 @endsection
 
