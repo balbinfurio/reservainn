@@ -49,7 +49,7 @@
                           </div>
                         </a></li>
 
-                        <li><a href="{{ 'oe' }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
+                        <li><a href="{{ route('deposits.index') }}" class="block bg-indigo-500 text-white rounded-lg shadow-lg py-3 px-4">
                           <div class="text-lg font-medium">
                             Abonos
                           </div>

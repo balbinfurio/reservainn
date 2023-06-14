@@ -6,6 +6,7 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\DepositController;
 
 use App\Models\City;
 
@@ -75,9 +76,17 @@ Route::resource('tours', TourController::class)->names([
     'destroy' => 'tours.destroy',
 ]);
 
-// Route::get('/reservations/{hotelId}/available', 'ReservationController@getAvailableTours');
 
 Route::get('reservations/{reservationId}/pdf', [ReservationController::class, 'generatePDF'])->name('reservations.pdf');
 
 
+Route::resource('deposits', DepositController::class)->names([
+    'index' => 'deposits.index',
+    'create' => 'deposits.create',
+    'store' => 'deposits.store',
+    'show' => 'deposits.show',
+    'edit' => 'deposits.edit',
+    'update' => 'deposits.update',
+    'destroy' => 'deposits.destroy',
+]);
 
