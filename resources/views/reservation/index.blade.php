@@ -25,6 +25,7 @@
                 <th scope="col">Salida</th>
                 {{-- <th scope="col">Temporada</th> --}}
                 <th scope="col">Total</th>
+                <th scope="col">Total ACT</th>
                 <th scope="col">Acciones</th>
 
             </tr>
@@ -49,6 +50,7 @@
                     <td>{{ $reservation->check_out }}</td>
                     {{-- <td>{{ $reservation->season }}</td> --}}
                     <td>{{ $reservation->total }}</td>
+                    <td>{{ $reservation->deposit ? $reservation->deposit->updated_total : 'N/A' }}</td>
 
                     <td>
                         <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">

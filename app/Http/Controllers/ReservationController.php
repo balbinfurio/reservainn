@@ -20,9 +20,10 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservations = Reservation::all();
-        return view('reservation.index',)->with('reservations', $reservations);
+        $reservations = Reservation::with('deposit')->get();
+        return view('reservation.index', compact('reservations'));
     }
+
 
     /**
      * Show the form for creating a new resource.

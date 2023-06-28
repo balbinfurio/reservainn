@@ -18,4 +18,11 @@ class Reservation extends Model
     {
         return $this->belongsTo(Hotel::class, 'hotel_id');
     }
+
+    public function deposit()
+    {
+        return $this->hasOne(Deposit::class, 'reservation_id');
+    }
+
+
 }
