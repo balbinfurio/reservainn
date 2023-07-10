@@ -55,7 +55,9 @@ class TourController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $tour = Tour::find($id);
+        $cities = City::all();
+        return view('tour.edit')->with(['tour' => $tour, 'cities' => $cities]);
     }
 
     /**
@@ -63,7 +65,16 @@ class TourController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tour = Tour::find($id);
+
+        $tour->name = $request->get('name');
+        $tour->city_id = $request->get('city_id');
+        
+
+
+        $tour->save();
+
+        return redirect('/tours');
     }
 
     /**
@@ -71,7 +82,9 @@ class TourController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tour = Tour::find($id);
+        $tour->delete();
+        return redirect('/tours');
     }
 
     // public function getAvailableTours($hotelId)
