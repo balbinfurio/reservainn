@@ -7,6 +7,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\TourController;
 use App\Http\Controllers\DepositController;
+use App\Http\Controllers\TicketController;
 
 use App\Models\City;
 
@@ -88,5 +89,15 @@ Route::resource('deposits', DepositController::class)->names([
     'edit' => 'deposits.edit',
     'update' => 'deposits.update',
     'destroy' => 'deposits.destroy',
+]);
+
+Route::resource('tickets', TicketController::class)->names([
+    'index' => 'tickets.index',
+    'create' => 'tickets.create',
+    'store' => 'tickets.store',
+    'show' => 'tickets.show',
+    'edit' => 'tickets.edit',
+    'update' => 'tickets.update',
+    'destroy' => 'tickets.destroy',
 ]);
 

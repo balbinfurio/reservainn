@@ -105,6 +105,8 @@ class DepositController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $deposit = Deposit::find($id);
+        $deposit->delete();
+        return redirect('/deposits');
     }
 }
