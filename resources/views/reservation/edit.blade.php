@@ -1,7 +1,7 @@
 @extends('layouts.main_template')
 
 @section('content')
-<h1> EDITAR RESERVA </h1>
+<h1> Generar PDF </h1>
 
 <form action="/reservations/{{ $reservation->id }}" method="POST">
     @csrf

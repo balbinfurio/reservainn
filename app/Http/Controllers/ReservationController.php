@@ -245,8 +245,8 @@ class ReservationController extends Controller
      */
     public function edit(string $id)
     {
-        $reservation = reservation::find($id);
-        return view('reservation.edit')->with('reservation', $reservation);
+        // $reservation = reservation::find($id);
+        // return view('reservation.edit')->with('reservation', $reservation);
     }
 
     /**
@@ -254,7 +254,12 @@ class ReservationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // $reservation = Reservation::find($id);
+        // $reservation->client_name = $request->get('client_name');
+
+        // $reservation->save();
+
+        // return redirect('/reservation.edit');
     }
 
     /**

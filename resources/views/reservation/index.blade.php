@@ -54,7 +54,8 @@
 
                     <td>
                         <form action="{{ route('reservations.destroy', $reservation->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
-                            <a href="/reservations/{{ $reservation->id }}/edit" class="btn btn-info">Editar</a>
+                            {{-- <a href="/reservations/{{ $reservation->id }}/edit" class="btn btn-info">PDF</a> --}}
+                            <a href="{{ route('reservations.pdf', $reservation->id) }}" target="_blank" class="btn btn-info">PDF</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Borrar</button>
