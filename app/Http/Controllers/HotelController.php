@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\City;
 
+
 class HotelController extends Controller
 {
     /**
@@ -140,6 +141,12 @@ class HotelController extends Controller
         $hotel->kid_discount = $request->get('kid_discount');
         $hotel->season_start_1 = $request->get('season_start_1');
         $hotel->season_end_1 = $request->get('season_end_1');
+        $hotel->season_start_2 = $request->get('season_start_2');
+        $hotel->season_end_2 = $request->get('season_end_2');
+        $hotel->season_start_3 = $request->get('season_start_3');
+        $hotel->season_end_3 = $request->get('season_end_3');
+        $hotel->season_start_4 = $request->get('season_start_4');
+        $hotel->season_end_4 = $request->get('season_end_4');
 
         $hotel->save();
 
