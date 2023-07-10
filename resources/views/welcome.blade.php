@@ -3,7 +3,7 @@
 @section('content')
 
   <h3 class="bg-dark text-white text-center">CIUDADES</h3>
-    <a href="cities/create" class="btn btn-dark">CREATE</a>
+    <a href="cities/create" class="btn btn-dark">AGREGAR</a>
 
     <div style="overflow-x:auto;">
         <br>
@@ -21,7 +21,7 @@
                         
                         <td>
                             <form action="{{ route('cities.destroy', $city->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
-                                <a href="/cities/{{ $city->id }}/edit" class="btn btn-info">Editar</a>
+                                {{-- <a href="/cities/{{ $city->id }}/edit" class="btn btn-info">Editar</a> --}}
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Borrar</button>
