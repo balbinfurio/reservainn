@@ -6,9 +6,10 @@
 <form action="/reservations" method="POST">
     @csrf
     <div class="mb-3">
-        <label for="" class="form-label">Número Reserva</label>
-        <input id="reservation_number" name="reservation_number" type="number" class="form-control" tabindex="1">
+        <label for="reservation_number" class="form-label">Número Reserva</label>
+        <input id="reservation_number" name="reservation_number" type="number" class="form-control" tabindex="1" value="{{ $lastReservation->reservation_number + 1 }}">
     </div>
+    
     <div class="mb-3">
         <label for="" class="form-label">Fecha Pedido</label>
         <input id="purchase_date" name="purchase_date" type="date" class="form-control" tabindex="2">

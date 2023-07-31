@@ -33,7 +33,11 @@ class ReservationController extends Controller
         $agencies = Agency::all();
         $hotels = Hotel::all();
         $tours = Tour::all();
-        return view('reservation.create', compact('agencies', 'hotels', 'tours'));
+
+        // Obtener el último registro de reserva
+        $lastReservation = Reservation::latest()->first();
+
+        return view('reservation.create', compact('agencies', 'hotels', 'tours', 'lastReservation'));
     }
 
     /**
@@ -344,4 +348,5 @@ class ReservationController extends Controller
     }
 
 }
+
 
