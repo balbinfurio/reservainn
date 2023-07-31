@@ -16,7 +16,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="agency_id" class="form-label">Numero de Reserva</label>
+        <label for="agency_id" class="form-label">Agencia</label>
         <select id="agency_id" name="agency_id" class="form-control" tabindex="3">
             @foreach($agencies as $agency)
                 <option value="{{ $agency->id }}">{{ $agency->name}}</option>

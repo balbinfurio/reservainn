@@ -36,6 +36,13 @@ class DepositController extends Controller
         $deposits->deposit_1 = $request->get('deposit_1');
         $deposits->deposit_2 = $request->get('deposit_2');
         $deposits->deposit_3 = $request->get('deposit_3');
+        $deposits->deposit_4 = $request->get('deposit_4');
+        $deposits->deposit_5 = $request->get('deposit_5');
+        $deposits->deposit_6 = $request->get('deposit_6');
+        $deposits->deposit_7 = $request->get('deposit_7');
+        $deposits->deposit_8 = $request->get('deposit_8');
+        $deposits->deposit_9 = $request->get('deposit_9');
+        $deposits->deposit_10 = $request->get('deposit_10');
 
         $reservation = Reservation::find($request->get('reservation_id'));
         $total_price = $reservation->total;
@@ -43,9 +50,17 @@ class DepositController extends Controller
         $deposit_1 = $request->input('deposit_1');
         $deposit_2 = $request->input('deposit_2');
         $deposit_3 = $request->input('deposit_3');
+        $deposit_4 = $request->input('deposit_4');
+        $deposit_5 = $request->input('deposit_5');
+        $deposit_6 = $request->input('deposit_6');
+        $deposit_7 = $request->input('deposit_7');
+        $deposit_8 = $request->input('deposit_8');
+        $deposit_9 = $request->input('deposit_9');
+        $deposit_10 = $request->input('deposit_10');
 
 
-        $deposits_minus_total = $total_price - ($deposit_1 + $deposit_2 + $deposit_3);
+        $deposits_minus_total = $total_price - ($deposit_1 + $deposit_2 + $deposit_3 + $deposit_4 + $deposit_5
+                                                + $deposit_6 + $deposit_7 + $deposit_8 + $deposit_9 + $deposit_10);
 
         $deposits->updated_total = $deposits_minus_total;
 
@@ -81,6 +96,13 @@ class DepositController extends Controller
         $deposit->deposit_1 = $request->get('deposit_1');
         $deposit->deposit_2 = $request->get('deposit_2');
         $deposit->deposit_3 = $request->get('deposit_3');
+        $deposit->deposit_4 = $request->get('deposit_4');
+        $deposit->deposit_5 = $request->get('deposit_5');
+        $deposit->deposit_6 = $request->get('deposit_6');
+        $deposit->deposit_7 = $request->get('deposit_7');
+        $deposit->deposit_8 = $request->get('deposit_8');
+        $deposit->deposit_9 = $request->get('deposit_9');
+        $deposit->deposit_10 = $request->get('deposit_10');
 
         
         $reservation = Reservation::find($deposit->reservation_id);
@@ -89,9 +111,17 @@ class DepositController extends Controller
         $deposit_1 = $request->input('deposit_1');
         $deposit_2 = $request->input('deposit_2');
         $deposit_3 = $request->input('deposit_3');
+        $deposit_4 = $request->input('deposit_4');
+        $deposit_5 = $request->input('deposit_5');
+        $deposit_6 = $request->input('deposit_6');
+        $deposit_7 = $request->input('deposit_7');
+        $deposit_8 = $request->input('deposit_8');
+        $deposit_9 = $request->input('deposit_9');
+        $deposit_10 = $request->input('deposit_10');
         
         
-        $deposits_minus_total = $total_price - ($deposit_1 + $deposit_2 + $deposit_3);
+        $deposits_minus_total = $total_price - ($deposit_1 + $deposit_2 + $deposit_3 + $deposit_4 + $deposit_5
+                                                + $deposit_6 + $deposit_7 + $deposit_8 + $deposit_9 + $deposit_10);
 
         $deposit->updated_total = $deposits_minus_total;
         
