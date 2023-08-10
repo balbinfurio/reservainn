@@ -249,8 +249,7 @@ class ReservationController extends Controller
      */
     public function edit(string $id)
     {
-        // $reservation = reservation::find($id);
-        // return view('reservation.edit')->with('reservation', $reservation);
+        
     }
 
     /**
@@ -258,12 +257,7 @@ class ReservationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // $reservation = Reservation::find($id);
-        // $reservation->client_name = $request->get('client_name');
-
-        // $reservation->save();
-
-        // return redirect('/reservation.edit');
+        
     }
 
     /**
@@ -342,6 +336,120 @@ class ReservationController extends Controller
 
         // Generar el nombre del archivo PDF
         $fileName = 'reservation_' . $reservationId . '.pdf';
+
+        // Descargar el PDF en el navegador del usuario
+        return $dompdf->stream($fileName);
+    }
+
+    public function generatePDF_deposits($reservationId)
+    {
+        // Obtener los datos de la reserva desde la base de datos
+        $reservation = Reservation::find($reservationId);
+        $hotel = Hotel::find($reservation->hotel_id);
+        // $city = City::all();
+        // $agency = Agency::all();
+
+        // Obtener el base64 de la imagen subida
+        $imageBase64 = $hotel->logo;
+
+        // Verificar si la imagen existe
+        if ($imageBase64) {
+            $logo = $imageBase64;
+            $logo = 'data:image/jpeg;base64,' . $logo;
+
+        } else {
+            // Establecer una imagen de reemplazo en caso de que la imagen no exista
+            $logo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
+        }
+
+        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/star.png')));
+
+        $number_people_x1 = $reservation->x1;
+        $rooms_x1 = ceil($number_people_x1 / 1);
+        $number_people_x2 = $reservation->x2;
+        $rooms_x2 = ceil($number_people_x2 / 2);
+        $number_people_x3 = $reservation->x3;
+        $rooms_x3 = ceil($number_people_x3 / 3);
+        $number_people_x4 = $reservation->x4;
+        $rooms_x4 = ceil($number_people_x4 / 4);
+        $number_people_x5 = $reservation->x5;
+        $rooms_x5 = ceil($number_people_x5 / 5);
+        $number_people_x6 = $reservation->x6;
+        $rooms_x6 = ceil($number_people_x6 / 6);
+        
+        // Crear una instancia de Dompdf con las opciones de configuración
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+        $dompdf = new Dompdf($options);
+        
+        // Generar el contenido HTML del PDF
+        $html = view('reservation.pdf_deposits', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo'))->render();
+
+        // Cargar el contenido HTML en Dompdf
+        $dompdf->loadHtml($html);
+
+        // Renderizar el PDF
+        $dompdf->render();
+
+        // Generar el nombre del archivo PDF
+        $fileName = 'reservation_deposits_' . $reservationId . '.pdf';
+
+        // Descargar el PDF en el navegador del usuario
+        return $dompdf->stream($fileName);
+    }
+
+    public function generatePDF_voucher($reservationId)
+    {
+        // Obtener los datos de la reserva desde la base de datos
+        $reservation = Reservation::find($reservationId);
+        $hotel = Hotel::find($reservation->hotel_id);
+        // $city = City::all();
+        // $agency = Agency::all();
+
+        // Obtener el base64 de la imagen subida
+        $imageBase64 = $hotel->logo;
+
+        // Verificar si la imagen existe
+        if ($imageBase64) {
+            $logo = $imageBase64;
+            $logo = 'data:image/jpeg;base64,' . $logo;
+
+        } else {
+            // Establecer una imagen de reemplazo en caso de que la imagen no exista
+            $logo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
+        }
+
+        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/star.png')));
+
+        $number_people_x1 = $reservation->x1;
+        $rooms_x1 = ceil($number_people_x1 / 1);
+        $number_people_x2 = $reservation->x2;
+        $rooms_x2 = ceil($number_people_x2 / 2);
+        $number_people_x3 = $reservation->x3;
+        $rooms_x3 = ceil($number_people_x3 / 3);
+        $number_people_x4 = $reservation->x4;
+        $rooms_x4 = ceil($number_people_x4 / 4);
+        $number_people_x5 = $reservation->x5;
+        $rooms_x5 = ceil($number_people_x5 / 5);
+        $number_people_x6 = $reservation->x6;
+        $rooms_x6 = ceil($number_people_x6 / 6);
+        
+        // Crear una instancia de Dompdf con las opciones de configuración
+        $options = new Options();
+        $options->set('defaultFont', 'Arial');
+        $dompdf = new Dompdf($options);
+        
+        // Generar el contenido HTML del PDF
+        $html = view('reservation.pdf_voucher', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo'))->render();
+
+        // Cargar el contenido HTML en Dompdf
+        $dompdf->loadHtml($html);
+
+        // Renderizar el PDF
+        $dompdf->render();
+
+        // Generar el nombre del archivo PDF
+        $fileName = 'reservation_voucher_' . $reservationId . '.pdf';
 
         // Descargar el PDF en el navegador del usuario
         return $dompdf->stream($fileName);

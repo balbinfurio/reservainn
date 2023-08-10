@@ -79,6 +79,8 @@ Route::resource('tours', TourController::class)->names([
 
 
 Route::get('reservations/{reservationId}/pdf', [ReservationController::class, 'generatePDF'])->name('reservations.pdf');
+Route::get('reservations/{reservationId}/pdf_deposits', [ReservationController::class, 'generatePDF_deposits'])->name('reservations.pdf_deposits');
+Route::get('reservations/{reservationId}/pdf_voucher', [ReservationController::class, 'generatePDF_voucher'])->name('reservations.pdf_voucher');
 
 
 Route::resource('deposits', DepositController::class)->names([
