@@ -36,6 +36,7 @@ class TourController extends Controller
         $tours = new Tour();
         $tours->name = $request->get('name');
         $tours->city_id = $request->get('city_id');
+        $tours->price = $request->get('price');
 
         $tours->save();
 
@@ -69,6 +70,7 @@ class TourController extends Controller
 
         $tour->name = $request->get('name');
         $tour->city_id = $request->get('city_id');
+        $tour->price = $request->get('price');
         
 
 

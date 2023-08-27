@@ -73,6 +73,11 @@
     
 
     <div class="mb-3">
+        <label for="" class="form-label">Numero de cupos para Tour</label>
+        <input id="tours_number" name="tours_number" type="number" class="form-control" tabindex="5">
+    </div>
+
+    <div class="mb-3">
         <label for="" class="form-label">Numero de personas para habitación tipo X1</label>
         <input id="x1" name="x1" type="number" class="form-control" tabindex="5">
     </div>

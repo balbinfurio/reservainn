@@ -11,6 +11,8 @@
 
                 <th scope="col">Ciudad</th>
 
+                <th scope="col">Precio</th>
+
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -18,9 +20,10 @@
             @foreach ($tours as $tour)
                 <tr>
                     <td>{{ $tour->name }}</td>
-
+                    
                     <td>{{ $tour->city->name }}</td>
-                   
+                    
+                    <td>{{ $tour->price }}</td>
                     <td>
                         <form action="{{ route('tours.destroy', $tour->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro que deseas borrar este elemento?');">
                             <a href="/tours/{{ $tour->id }}/edit" class="btn btn-info">Editar</a>

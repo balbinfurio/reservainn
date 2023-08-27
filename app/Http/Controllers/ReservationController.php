@@ -51,6 +51,7 @@ class ReservationController extends Controller
         $reservations->agency_id = $request->get('agency_id');
         $reservations->hotel_id = $request->get('hotel_id');
         $reservations->tour_id = $request->get('tour_id');
+        $reservations->tours_number = $request->get('tours_number');
         $reservations->x1 = $request->get('x1');
         $reservations->x2 = $request->get('x2');
         $reservations->x3 = $request->get('x3');
@@ -164,6 +165,14 @@ class ReservationController extends Controller
         $interval = $check_in->diff($check_out);
         $numNights = $interval->days;
 
+        // bloque para calcular precio total de los cupos del tour de la reserva
+
+        $tourId = request()->input('tour_id');
+        $tour = Tour::find($tourId);
+        $tour_price = $tour->price;
+        $tours_number = request()->input('tours_number');
+        $tours_total = $tour_price * $tours_number;
+
         // El valor de $numNights representa el número de noches entre las fechas de check-in y check-out
 
         // Calcular el precio en función de la temporada
@@ -171,21 +180,15 @@ class ReservationController extends Controller
             // dd('Alta');
             $reservations->total = ($high_season_x1 * $reservations->x1 + $high_season_x2 * $reservations->x2 + $high_season_x3 * $reservations->x3
                                     + $high_season_x4 * $reservations->x4 + $high_season_x5 * $reservations->x5 + $high_season_x6 * $reservations->x6
-                                    + $kid_price_high * $reservations->kids_number) * $numNights;
+                                    + $kid_price_high * $reservations->kids_number) * $numNights + $tours_total;
         } else {
             // dd('Baja');
-            $reservations->total = $defaultPrice * $numNights;
+            $reservations->total = $defaultPrice * $numNights + $tours_total;
         }
 
 
         
-        /// bloque para traer el precio de cada tour
-
-        // $tourId = request()->input('tour_id');
-        // $tour = Tour::find($tourId);
-        // $tour_name = $tour->name;
-
-        // dd($tour_name);
+        
         
         
         
@@ -223,9 +226,15 @@ class ReservationController extends Controller
         // Obtén los tours disponibles para esa ciudad
         $tours = Tour::where('city_id', $cityId)->get();
 
-        // dd($tours);
-
+        
         $cityId = $hotel->city_id;
+
+        
+        
+
+
+        // dd($tours_total);
+        
 
 
 
@@ -289,7 +298,7 @@ class ReservationController extends Controller
         // Obtener los datos de la reserva desde la base de datos
         $reservation = Reservation::find($reservationId);
         $hotel = Hotel::find($reservation->hotel_id);
-        // $city = City::all();
+        $tour = Tour::find($reservation->tour_id);
         $agency = Agency::find($reservation->agency_id);
 
         // Obtener el base64 de la imagen subida
@@ -329,7 +338,7 @@ class ReservationController extends Controller
         $dompdf = new Dompdf($options);
         
         // Generar el contenido HTML del PDF
-        $html = view('reservation.pdf', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo', 'purchase_date', 'agency'))->render();
+        $html = view('reservation.pdf', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo', 'purchase_date', 'agency', 'tour'))->render();
 
         // Cargar el contenido HTML en Dompdf
         $dompdf->loadHtml($html);
@@ -349,6 +358,7 @@ class ReservationController extends Controller
         // Obtener los datos de la reserva desde la base de datos
         $reservation = Reservation::find($reservationId);
         $hotel = Hotel::find($reservation->hotel_id);
+        $tour = Hotel::find($reservation->hotel_id);
         // $city = City::all();
         // $agency = Agency::all();
 
@@ -406,7 +416,7 @@ class ReservationController extends Controller
         // Obtener los datos de la reserva desde la base de datos
         $reservation = Reservation::find($reservationId);
         $hotel = Hotel::find($reservation->hotel_id);
-        // $city = City::all();
+        $tour = Tour::find($reservation->tour_id);
         // $agency = Agency::all();
 
         // Obtener el base64 de la imagen subida
@@ -443,7 +453,7 @@ class ReservationController extends Controller
         $dompdf = new Dompdf($options);
         
         // Generar el contenido HTML del PDF
-        $html = view('reservation.pdf_voucher', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo'))->render();
+        $html = view('reservation.pdf_voucher', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo', 'tour'))->render();
 
         // Cargar el contenido HTML en Dompdf
         $dompdf->loadHtml($html);

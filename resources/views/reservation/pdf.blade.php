@@ -56,11 +56,6 @@
             height: 100px;
         }
 
-        /* #agency-info {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        } */
 
         #agency-info .label {
             font-weight: bold;
@@ -101,6 +96,13 @@
             clear: right;
             margin-top: 40%;
             text-align: right;
+        }
+
+        #add-ons {
+            float: left;
+            width: 50%;
+            clear: left;
+            margin-top: 60%;
         }
 
         
@@ -153,10 +155,13 @@
 
     <div id="reservation-price">
         <div>
-            <h2>TOTAL ALOJAMIENTO: ${{ $reservation->total }}</h2>
+            <h2>TOTAL ALOJAMIENTO: ${{ $reservation->total - ($tour->price * $reservation->tours_number) }}</h2>
         </div>
         <div>
-            <h2>TOTAL ADICIONALES: - </h2>
+            <h2>TOTAL ADICIONALES: {{ $tour->price * $reservation->tours_number }} </h2>
+        </div>
+        <div>
+            <h2>TOTAL RESERVA: ${{ $reservation->total }}</h2>
         </div>
     </div>
 
@@ -166,7 +171,7 @@
             <h2>ACOMODACIÓN: {{ $rooms_x1 . 'x1 ' . $rooms_x2 . 'x2 ' . $rooms_x3 . 'x3 ' . $rooms_x4 . 'x4 ' . $rooms_x5 . 'x5 ' . $rooms_x6 . 'x6 '}}</h2>
         </div>
         <div>
-            <h2>TOTAL ${{ $reservation->total }}</h2>
+            <h2>TOTAL ${{ $reservation->total - ($tour->price * $reservation->tours_number) }}</h2>
         </div>
     </div>
 
@@ -183,9 +188,14 @@
     <div id="add-ons">
         <h1>SERVICIOS ADICIONALES Y RECEPTIVOS</h1>
         <div>
-            <h2>Tour: Borondo PAX: 6 TOTAL: $759635</h2>
+            <h2>TOUR: {{ $tour->name }}</h2>
         </div>
-
+        <div>
+            <h2>PAX: {{ $reservation->tours_number }}</h2>
+        </div>
+        <div>
+            <h2>TOTAL:$ {{ $tour->price * $reservation->tours_number }}</h2>
+        </div>
     </div>
     
 
