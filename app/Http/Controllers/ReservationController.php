@@ -290,7 +290,7 @@ class ReservationController extends Controller
         $reservation = Reservation::find($reservationId);
         $hotel = Hotel::find($reservation->hotel_id);
         // $city = City::all();
-        // $agency = Agency::all();
+        $agency = Agency::find($reservation->agency_id);
 
         // Obtener el base64 de la imagen subida
         $imageBase64 = $hotel->logo;
@@ -313,12 +313,15 @@ class ReservationController extends Controller
         $rooms_x2 = ceil($number_people_x2 / 2);
         $number_people_x3 = $reservation->x3;
         $rooms_x3 = ceil($number_people_x3 / 3);
+        // dd($number_people_x3);
         $number_people_x4 = $reservation->x4;
         $rooms_x4 = ceil($number_people_x4 / 4);
         $number_people_x5 = $reservation->x5;
         $rooms_x5 = ceil($number_people_x5 / 5);
         $number_people_x6 = $reservation->x6;
         $rooms_x6 = ceil($number_people_x6 / 6);
+
+        $purchase_date = $reservation->purchase_date;
         
         // Crear una instancia de Dompdf con las opciones de configuración
         $options = new Options();
@@ -326,7 +329,7 @@ class ReservationController extends Controller
         $dompdf = new Dompdf($options);
         
         // Generar el contenido HTML del PDF
-        $html = view('reservation.pdf', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo'))->render();
+        $html = view('reservation.pdf', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo', 'purchase_date', 'agency'))->render();
 
         // Cargar el contenido HTML en Dompdf
         $dompdf->loadHtml($html);

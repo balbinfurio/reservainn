@@ -73,27 +73,27 @@
     
 
     <div class="mb-3">
-        <label for="" class="form-label">X1</label>
+        <label for="" class="form-label">Numero de personas para habitación tipo X1</label>
         <input id="x1" name="x1" type="number" class="form-control" tabindex="5">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X2</label>
+        <label for="" class="form-label">Numero de personas para habitación tipo X2</label>
         <input id="x2" name="x2" type="number" class="form-control" tabindex="6">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X3</label>
+        <label for="" class="form-label">Numero de personas para habitación tipo X3</label>
         <input id="x3" name="x3" type="number" class="form-control" tabindex="7">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X4</label>
+        <label for="" class="form-label">Numero de personas para habitación tipo X4</label>
         <input id="x4" name="x4" type="number" class="form-control" tabindex="8">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X5</label>
+        <label for="" class="form-label">Numero de personas para habitación tipo X5</label>
         <input id="x5" name="x5" type="number" class="form-control" tabindex="9">
     </div>
     <div class="mb-3">
-        <label for="" class="form-label">X6</label>
+        <label for="" class="form-label">Numero de personas para habitación tipo X6</label>
         <input id="x6" name="x6" type="number" class="form-control" tabindex="10">
     </div>
     <div class="mb-3">
