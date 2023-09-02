@@ -103,7 +103,7 @@
     </div>
     <div class="mb-3">
         <label for="" class="form-label"># Niños</label>
-        <input id="kids_number" name="kids_number" type="number" class="form-control" tabindex="11">
+        <input id="kids_number" name="kids_number" type="number" class="form-control" min="0" max="99">
     </div>
     <div class="mb-3">
         <label for="" class="form-label">Titular</label>

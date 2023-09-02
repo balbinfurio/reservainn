@@ -7,6 +7,7 @@ use App\Models\Agency;
 use App\Models\Hotel;
 use App\Models\Tour;
 use App\Models\City;
+use App\Models\Deposit;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Dompdf\Dompdf;
@@ -314,7 +315,7 @@ class ReservationController extends Controller
             $logo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
         }
 
-        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/star.png')));
+        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
 
         $number_people_x1 = $reservation->x1;
         $rooms_x1 = ceil($number_people_x1 / 1);
@@ -358,7 +359,10 @@ class ReservationController extends Controller
         // Obtener los datos de la reserva desde la base de datos
         $reservation = Reservation::find($reservationId);
         $hotel = Hotel::find($reservation->hotel_id);
-        $tour = Hotel::find($reservation->hotel_id);
+        $deposit = Deposit::where('reservation_id', $reservationId)->first();
+        // dd($deposit);
+        $tour = Tour::find($reservation->tour_id);
+        $agency = Agency::find($reservation->agency_id);
         // $city = City::all();
         // $agency = Agency::all();
 
@@ -375,7 +379,7 @@ class ReservationController extends Controller
             $logo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
         }
 
-        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/star.png')));
+        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
 
         $number_people_x1 = $reservation->x1;
         $rooms_x1 = ceil($number_people_x1 / 1);
@@ -389,6 +393,8 @@ class ReservationController extends Controller
         $rooms_x5 = ceil($number_people_x5 / 5);
         $number_people_x6 = $reservation->x6;
         $rooms_x6 = ceil($number_people_x6 / 6);
+
+        $purchase_date = $reservation->purchase_date;
         
         // Crear una instancia de Dompdf con las opciones de configuración
         $options = new Options();
@@ -396,7 +402,7 @@ class ReservationController extends Controller
         $dompdf = new Dompdf($options);
         
         // Generar el contenido HTML del PDF
-        $html = view('reservation.pdf_deposits', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo'))->render();
+        $html = view('reservation.pdf_deposits', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo', 'purchase_date', 'agency', 'tour', 'deposit'))->render();
 
         // Cargar el contenido HTML en Dompdf
         $dompdf->loadHtml($html);
@@ -416,7 +422,9 @@ class ReservationController extends Controller
         // Obtener los datos de la reserva desde la base de datos
         $reservation = Reservation::find($reservationId);
         $hotel = Hotel::find($reservation->hotel_id);
+        // $tour = Tour::find($reservation->tour_id);
         $tour = Tour::find($reservation->tour_id);
+        $agency = Agency::find($reservation->agency_id);
         // $agency = Agency::all();
 
         // Obtener el base64 de la imagen subida
@@ -432,7 +440,7 @@ class ReservationController extends Controller
             $logo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
         }
 
-        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/star.png')));
+        $setLogo = 'data:image/jpeg;base64,' . base64_encode(file_get_contents(public_path('img/app.png')));
 
         $number_people_x1 = $reservation->x1;
         $rooms_x1 = ceil($number_people_x1 / 1);
@@ -446,6 +454,8 @@ class ReservationController extends Controller
         $rooms_x5 = ceil($number_people_x5 / 5);
         $number_people_x6 = $reservation->x6;
         $rooms_x6 = ceil($number_people_x6 / 6);
+
+        $purchase_date = $reservation->purchase_date;
         
         // Crear una instancia de Dompdf con las opciones de configuración
         $options = new Options();
@@ -453,7 +463,7 @@ class ReservationController extends Controller
         $dompdf = new Dompdf($options);
         
         // Generar el contenido HTML del PDF
-        $html = view('reservation.pdf_voucher', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo', 'tour'))->render();
+        $html = view('reservation.pdf_voucher', compact('reservation', 'hotel', 'rooms_x1', 'rooms_x2', 'rooms_x3', 'rooms_x4', 'rooms_x5', 'rooms_x6', 'logo', 'setLogo', 'purchase_date', 'agency', 'tour'))->render();
 
         // Cargar el contenido HTML en Dompdf
         $dompdf->loadHtml($html);

@@ -105,6 +105,13 @@
             margin-top: 60%;
         }
 
+        #add-ons-1 {
+            float: right;
+            width: 50%;
+            clear: right;
+            margin-top: 60%;
+        }
+
         
 
 
@@ -196,6 +203,23 @@
         <div>
             <h2>TOTAL:$ {{ $tour->price * $reservation->tours_number }}</h2>
         </div>
+    </div>
+
+    <div id="add-ons-1">
+        <h1>INSTRUCCIONES DE PAGO:</h1>
+        <div>
+            <h2>BANCOLOMBIA: Cta Ahorros 006 34869808</h2>
+        </div>
+        <div>
+            <h2>DAVIVIENDA: Cta Ahorros 488 411696633</h2>
+        </div>
+        <div>
+            <h2>A NOMBRE DE: Diego Úsuga Arbeláez</h2>
+        </div>
+        <div>
+            <h2>IDENTIFICACIÓN: 1128423585</h2>
+        </div>
+        <P>Todos los servicios de receptivos y tours son prestados por Viajes Scape. RNT: 59761</P>
     </div>
     
 

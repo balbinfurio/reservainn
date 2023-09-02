@@ -3,67 +3,205 @@
 <head>
     <title>Reservation PDF</title>
     <style>
-        /* Estilos CSS para el PDF */
+        /* Estilos para el encabezado */
         body {
             font-family: Arial, sans-serif;
-            font-size: 14px;
+            font-size: 10px;
             color: #333;
-            line-height: 1.5;
+            /* line-height: 1.5; */
         }
-        h1 {
-            font-size: 24px;
-            color: #555;
-            margin-bottom: 20px;
+        #header-content {
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: right;
+        padding: 20px;
+        background-color: #f0f0f0; /* Puedes ajustar el color de fondo según tu diseño */
         }
-        h2 {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 20px;
+
+        #header-content h1, #header-content h2 {
+        margin: 0;
+        color: #333;
         }
-        .reservation-info {
-            margin-bottom: 10px;
+
+        #header-content h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
         }
-        .label {
+
+        #header-content h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        }
+        #hotel_logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #hotel_logo img {
+            width: 150px;
+            height: 100px;
+        }
+        #scape_logo {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center; /* Para centrar el contenido horizontalmente */
+        }
+
+        #scape_logo img {
+            width: 150px;
+            height: 100px;
+        }
+
+
+        #agency-info .label {
             font-weight: bold;
             display: inline-block;
-            width: 120px;
+            width: 80px;
         }
-        .value {
+
+        #agency-info .value {
             display: inline-block;
-            width: 250px;
         }
-        .total {
-            font-size: 18px;
-            display: inline-block;
-            width: 250px;
+        #agency-info {
+            float: left;
+            width: 50%;
         }
-        /* Agrega aquí más estilos personalizados si los necesitas */
+
+        #reservation-price {
+            float: right;
+            width: 50%;
+            text-align: right;
+        }
+
+        /* Limpieza de floats */
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        #reservation-info {
+            float: left;
+            width: 50%;
+            clear: left;
+            margin-top: 33%;
+        }
+        #check-in-info {
+            float: right;
+            width: 50%;
+            clear: right;
+            margin-top: 40%;
+            text-align: right;
+        }
+
+        #add-ons {
+            float: left;
+            width: 50%;
+            clear: left;
+            margin-top: 60%;
+        }
+
+        
+
+
+
     </style>
 </head>
 <body>
-    <div>
+    <div id="header-content">
+        <h2>VOUCHER PDF</h2>
+        <div>
+            <h2>Reserva Hotelera: {{ $reservation->reservation_number }}</h2>
+        </div>
+        <div>
+            <h2>Solicitado el: {{ $reservation->purchase_date }}</h2>
+        </div>
+        <div>   
+            <h2>Titular Reserva: {{ $reservation->client_name }}</h2>
+        </div>
+        <div>
+            <h2>Identificación: {{ $reservation->document_number }}</h2>
+        </div>
+    </div>
+
+    <div id="hotel_logo">
         <img src="{{ $logo }}" alt="Logo" style="width: 150px; height: 100px;">
     </div>
 
-    <div style="position: absolute; top: 0; right: 0;">
+    <div id="scape_logo">
         <img src="{{ $setLogo }}" alt="setLogo" style="width: 150px; height: 100px;">
     </div>
-    
-    <div class="reservation-info" style="position: absolute; top: 70; left: 0;">
-        <h1>Reserva ID: VOUCHER {{ $reservation->reservation_number }}</h1>
-    </div>
-    
-    <div class="reservation-info" style="position: absolute; top: 120; left: 0;">
-        <span class="label">Agencia:</span>
-        <span class="value">{{ $reservation->agency->name }}</span>
+
+    <div id="agency-info">
+        <div class="reservation-content">
+            <h2>AGENCIA: {{ $agency->name }}</h2>
+        </div>
+        <div>
+            <h2>NIT: {{ $agency->NIT }}</h2>
+        </div>
+        <div>
+            <h2>CONTACTO: {{ $agency->phone }}</h2>
+        </div>
+        <div>
+            <h2>DIRECCIÓN: {{ $agency->address }}</h2>
+        </div>
+        <div>
+            <h2>CIUDAD: {{ $agency->city }}</h2>
+        </div>
     </div>
 
-    <div class="reservation-info" style="position: absolute; top: 150; left: 0;">
-        <span class="label">NIT:</span>
-        <span class="value">{{ $reservation->agency->NIT }}</span>
+    <div id="reservation-price">
+        <div>
+            <h2>TOTAL ALOJAMIENTO: ${{ $reservation->total - ($tour->price * $reservation->tours_number) }}</h2>
+        </div>
+        <div>
+            <h2>TOTAL ADICIONALES: {{ $tour->price * $reservation->tours_number }} </h2>
+        </div>
+        <div>
+            <h2>TOTAL RESERVA: ${{ $reservation->total }}</h2>
+        </div>
     </div>
 
-    <div class="reservation-info" style="position: absolute; top: 180; left: 0;">
+    <div id="reservation-info">
+        <h1>ALOJAMIENTO</h1>
+        <div>
+            <h2>ACOMODACIÓN: {{ $rooms_x1 . 'x1 ' . $rooms_x2 . 'x2 ' . $rooms_x3 . 'x3 ' . $rooms_x4 . 'x4 ' . $rooms_x5 . 'x5 ' . $rooms_x6 . 'x6 '}}</h2>
+        </div>
+        <div>
+            <h2>TOTAL ${{ $reservation->total - ($tour->price * $reservation->tours_number) }}</h2>
+        </div>
+    </div>
+
+    <div id="check-in-info">
+        <div>
+            <h2>INGRESO: {{$reservation->check_in}}</h2>
+        </div>
+        <div>
+            <h2>SALIDA: {{$reservation->check_out}}</h2>
+        </div>
+
+    </div>
+
+    <div id="add-ons">
+        <h1>SERVICIOS ADICIONALES Y RECEPTIVOS</h1>
+        <div>
+            <h2>TOUR: {{ $tour->name }}</h2>
+        </div>
+        <div>
+            <h2>PAX: {{ $reservation->tours_number }}</h2>
+        </div>
+        <div>
+            <h2>TOTAL:$ {{ $tour->price * $reservation->tours_number }}</h2>
+        </div>
+    </div>
+    
+
+
+    {{-- <div class="reservation-info" style="position: relative; top: 180; left: 0;">
         <span class="label">Correo:</span>
         <span class="value">{{ $reservation->agency->mail }}</span>
     </div>
@@ -73,10 +211,6 @@
         <span class="value">{{ $hotel->name }}</span>
     </div>
 
-    <div class="reservation-info" style="position: absolute; top: 240; left: 0;">
-        <span class="label">Dirección:</span>
-        <span class="value">{{ $hotel->address }}</span>
-    </div>
 
     <div class="reservation-info" style="position: absolute; top: 270; left: 0;">
         <span class="label">Ciudad:</span>
@@ -84,34 +218,25 @@
     </div>
     
     
-    <div class="reservation-info" style="position: absolute; top: 300; left: 0;">
-        <span class="label">Nombre Cliente:</span>
-        <span class="value">{{ $reservation->client_name }}</span>
-    </div>
+    
     <div class="reservation-info" style="position: absolute; top: 330; left: 0;">
         <span class="label">Check In:</span>
         <span class="value">{{ $reservation->check_in }}</span>
     </div>
-    <div class="reservation-info" style="position: absolute; top: 360; left: 0;">
-        <span class="label">Acomodación:</span>
-        <span class="value">{{ $rooms_x1 . 'x1 ' . $rooms_x2 . 'x2 ' . $rooms_x3 . 'x3 ' . $rooms_x4 . 'x4 ' . $rooms_x5 . 'x5 ' . $rooms_x6 . 'x6 '}}</span>
-    </div>
+    
+    
+    --}}
     
     
 
-    <div class="reservation-info" style="position: absolute; top: 70; right: 0;">
+    {{-- <div class="reservation-info" style="position: absolute; top: 70; right: 0;">
         <h1>DIEGO E. USUGA ARBELÁEZ</h1>
     </div>
     
     <div class="reservation-info" style="position: absolute; top: 100; right: 0;">
         <h2>1128423585-8</h2>
-    </div>
+    </div> --}}
     
-    <div class="total" style="position: absolute; top: 300; right: 0;">
-        <br>
-        <span class="label">Total:</span>
-        <span >{{ $reservation->total }}</span>
-    </div>
 
 
 
