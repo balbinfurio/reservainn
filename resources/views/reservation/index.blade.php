@@ -48,7 +48,7 @@
                     <td>{{ $reservation->document_number }}</td>
                     <td>{{ $reservation->check_in }}</td>
                     <td>{{ $reservation->check_out }}</td>
-                    {{-- <td>{{ $reservation->season }}</td> --}}
+                    {{-- <td>{{ $reservation->season }}</td> --}} 
                     <td>{{ $reservation->total }}</td>
                     <td>{{ $reservation->deposit ? $reservation->deposit->updated_total : 'N/A' }}</td>
 
